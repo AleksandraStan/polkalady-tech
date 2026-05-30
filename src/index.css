@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  color: #f8f7ff;
+  background: #020316;
+  font-family: "Inter", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #020316;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.hero-section {
+  position: relative;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(14, 117, 180, 0.24), transparent 34%),
+    #020316;
+}
+
+.hero-copy {
+  position: absolute;
+  z-index: 2;
+  top: 8vh;
+  left: 50%;
+  width: min(740px, 84vw);
+  translate: -50% 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-kicker,
+.closing-section p {
+  margin: 0 0 14px;
+  color: #5ce1ff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.06em;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 0.98;
+}
+
+.hero-description {
+  max-width: 510px;
+  margin: 20px auto 0;
+  color: rgba(238, 239, 255, 0.72);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.7;
+}
+
+.scroll-hero {
+  position: relative;
+  width: 100%;
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #020316;
+  will-change: clip-path;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-image-mobile {
+  display: none;
+}
+
+.scroll-cue {
+  position: absolute;
+  z-index: 2;
+  top: 91vh;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  translate: -50% 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.scroll-cue i {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(#66e8ff, transparent);
+}
+
+.closing-section {
+  display: grid;
+  min-height: 72vh;
+  place-content: center;
+  padding: 10vw;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(47, 8, 113, 0.6), transparent 50%),
+    #020316;
+  text-align: center;
+}
+
+h2 {
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 0.95;
+}
+
+@media (max-width: 767px) {
+  .hero-copy {
+    top: 7vh;
+  }
+
+  .hero-description {
+    max-width: 340px;
+  }
+
+  .hero-image-mobile {
+    display: block;
+  }
+
+  .hero-image-desktop {
+    display: none;
+  }
+}
