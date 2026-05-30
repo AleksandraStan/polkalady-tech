@@ -5,13 +5,13 @@ import SiteMenu, { type PageName } from "./components/ui/site-menu";
 const heroImage = "/website.png";
 
 const articles = [
-  ["01", "The Quiet Architecture of a Digital Life", "Design", "6 min"],
-  ["02", "How Curiosity Becomes a Creative System", "Ideas", "4 min"],
+  ["01", "3D recontruction & digital universe in archaeology", "3D Design", "6 min"],
+  ["02", "Can LLM read as good as humans?", "AI & research", "4 min"],
   ["03", "Building Worlds at the Edge of Technology", "Future", "7 min"],
 ];
 
 const projects = [
-  ["Digital Horizons", "Creative Direction", "An immersive visual identity built around possibility."],
+  ["Digital travelling", "Creative Direction", "An immersive visual identity built around possibility."],
   ["Connected Cities", "Concept Design", "A luminous interface for stories of future urban life."],
   ["Beyond Ordinary", "Digital Experience", "A cinematic web journey shaped by motion and atmosphere."],
 ];
