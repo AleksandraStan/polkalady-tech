@@ -51,7 +51,8 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
           <span />
         </motion.button>
         <button className="brand" onClick={() => navigate("home")}>
-          <span>Polka</span>Lady
+          <img src={`${import.meta.env.BASE_URL}polkalady-logo.svg`} alt="" />
+          <strong><span>Polka</span>Lady</strong>
         </button>
         <span className="header-mark">PL / 01</span>
       </header>
@@ -97,9 +98,10 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
 
         <div className="menu-content">
           <p className="section-label">Navigate</p>
-          <h2>
-            Polka<span>Lady</span>
-          </h2>
+          <div className="menu-brand">
+            <img src={`${import.meta.env.BASE_URL}polkalady-logo.svg`} alt="" />
+            <h2>Polka<span>Lady</span></h2>
+          </div>
           <div className="menu-line" />
 
           <ul>
