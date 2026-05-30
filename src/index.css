@@ -65,6 +65,9 @@ button {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   border: 0;
   background: transparent;
   color: white;
@@ -73,6 +76,16 @@ button {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.07em;
+}
+
+.brand img {
+  width: 58px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.brand strong {
+  font-weight: 700;
 }
 
 .brand span,
@@ -152,6 +165,18 @@ button {
 .side-menu h2 {
   margin: 0;
   font-size: 44px;
+}
+
+.menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-brand img {
+  width: 82px;
+  height: 66px;
+  object-fit: contain;
 }
 
 .menu-line {
@@ -411,7 +436,6 @@ h2 {
   aspect-ratio: 1 / 1.05;
   margin-bottom: 20px;
   background-color: #090629;
-  background-image: url("/website.png");
   background-size: cover;
 }
 
