@@ -35,7 +35,7 @@ function App() {
           <>
             <section className="hero-section">
               <div className="hero-copy">
-                <p className="hero-kicker">Digital Horizons</p>
+                <p className="hero-kicker"></p>
                 <h1>Building ideas beyond the ordinary.</h1>
                 <p className="hero-description">
                   Scroll to explore a world shaped by technology, curiosity, and
