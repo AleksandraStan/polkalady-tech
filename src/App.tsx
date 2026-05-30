@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SmoothScrollHero from "./components/ui/smooth-scroll-hero";
 import SiteMenu, { type PageName } from "./components/ui/site-menu";
 
-const heroImage = "/website.png";
+const heroImage = `${import.meta.env.BASE_URL}website.png`;
 
 const articles = [
   ["01", "3D recontruction & digital universe in archaeology", "3D Design", "6 min"],
@@ -98,7 +98,7 @@ function App() {
             <div className="project-grid">
               {projects.map(([title, category, description], index) => (
                 <article key={title}>
-                  <div className={`project-art project-art-${index + 1}`} />
+                  <div className={`project-art project-art-${index + 1}`} style={{ backgroundImage: `url(${heroImage})` }} />
                   <p>{category}</p>
                   <h2>{title}</h2>
                   <span>{description}</span>
