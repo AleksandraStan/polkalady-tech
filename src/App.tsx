@@ -6,9 +6,9 @@ import SiteMenu, { type PageName } from "./components/ui/site-menu";
 const heroImage = `${import.meta.env.BASE_URL}website.png`;
 
 const projects = [
-      ["Digital travelling", "Creative Direction", "An immersive visual identity built around possibility."],
-      ["Connected Cities", "Concept Design", "A luminous interface for stories of future urban life."],
-      ["Beyond Ordinary", "Digital Experience", "A cinematic web journey shaped by motion and atmosphere."],
+      ["Digital travelling", "Individual Journey", "An immersive visual journey across different territories."],
+      ["Connected Cities", "Concept Design", "A hypothetical story of future urban life."],
+      ["Beyond Visible", "Digital Experience", "A journey shaped by flows."],
     ];
 
 function App() {
@@ -34,10 +34,10 @@ function App() {
                         <>
                                     <section className="hero-section">
                                                   <div className="hero-copy">
-                                                                  <p className="hero-kicker">Digital Horizons</p>
-                                                                  <h1>Building ideas beyond the ordinary.</h1>
+                                                                  <p className="hero-kicker"></p>
+                                                                  <h1>Research ideas.</h1>
                                                                   <p className="hero-description">
-                                                                                    Scroll to explore a world shaped by technology, curiosity, and
+                                                                                    Digital humanities research is shaped by technology, curiosity, and
                                                                                     imagination.
                                                                   </p>
                                                   </div>
@@ -70,8 +70,7 @@ function App() {
                                     <p className="section-label">Selected Work</p>
                                     <h1>Ideas made <span>visible.</span></h1>
                                     <p className="page-intro">
-                                                  A collection of concepts where bold colour, clear thinking, and
-                                                  digital atmosphere meet.
+                                                  A collection of concepts & models.
                                     </p>
                                     <div className="project-grid">
                                         {projects.map(([title, category, description], index) => (
