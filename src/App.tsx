@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import AboutPage from "./components/about-page";
 import BlogPage from "./components/blog-page";
+import JourneysPage from "./components/journeys-page";
 import PortfolioPage from "./components/portfolio-page";
 import SmoothScrollHero from "./components/ui/smooth-scroll-hero";
 import SiteMenu, { type PageName } from "./components/ui/site-menu";
@@ -11,6 +13,12 @@ function App() {
     const hash = window.location.hash.slice(1);
     if (hash === "portfolio" || hash.startsWith("project/")) {
       return "portfolio";
+    }
+    if (hash === "journeys") {
+      return "journeys";
+    }
+    if (hash === "about") {
+      return "about";
     }
     return hash === "blog" || hash.startsWith("article/") ? "blog" : "home";
   });
@@ -62,6 +70,10 @@ function App() {
         {page === "blog" && <BlogPage />}
 
         {page === "portfolio" && <PortfolioPage />}
+
+        {page === "journeys" && <JourneysPage />}
+
+        {page === "about" && <AboutPage />}
       </main>
     </>
   );

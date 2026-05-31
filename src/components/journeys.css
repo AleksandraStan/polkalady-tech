@@ -1,0 +1,221 @@
+.journeys-page {
+  min-height: 100vh;
+  padding: 138px clamp(18px, 5vw, 72px) 64px;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(94, 170, 92, 0.24), transparent 33%),
+    radial-gradient(circle at 84% 20%, rgba(36, 112, 76, 0.3), transparent 31%),
+    linear-gradient(145deg, #071b16 0%, #0b251d 48%, #06140f 100%);
+}
+
+.journeys-heading {
+  width: min(760px, 100%);
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.journeys-heading h1 span {
+  color: #a7df77;
+}
+
+.journeys-page .section-label {
+  color: #8fcf8a;
+}
+
+body:has(.journeys-page) .brand span,
+body:has(.journeys-page) .side-menu h2 span {
+  color: #a7df77;
+}
+
+.journeys-heading > p:last-child {
+  max-width: 600px;
+  margin: 18px auto 0;
+  color: rgba(238, 239, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.journey-selector {
+  display: flex;
+  width: min(1220px, 100%);
+  height: min(55vw, 580px);
+  min-height: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(161, 211, 139, 0.28);
+  border-radius: 22px;
+  background: rgba(4, 24, 16, 0.88);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+}
+
+.journey-option {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 44px;
+  overflow: hidden;
+  border: 0;
+  border-right: 1px solid rgba(218, 238, 207, 0.18);
+  padding: 0;
+  opacity: 0;
+  background-color: #071b14;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  transform: translateX(-42px);
+  transition: flex 700ms ease, opacity 500ms ease, transform 500ms ease,
+    filter 500ms ease;
+}
+
+.journey-option:last-child {
+  border-right: 0;
+}
+
+.journey-option.visible {
+  opacity: 0.67;
+  transform: translateX(0);
+}
+
+.journey-option:hover,
+.journey-option.active {
+  filter: saturate(1.08) brightness(1.04);
+}
+
+.journey-option.active {
+  flex: 8 1 0;
+  opacity: 1;
+}
+
+.journey-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(2, 19, 11, 0.9));
+}
+
+.journey-label {
+  position: absolute;
+  right: 20px;
+  bottom: 22px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.journey-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 1px solid rgba(178, 226, 153, 0.58);
+  border-radius: 50%;
+  background: rgba(3, 24, 14, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.journey-icon svg {
+  width: 20px;
+  fill: none;
+  stroke: #b6e68d;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.journey-copy {
+  display: grid;
+  min-width: 220px;
+  gap: 4px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 450ms ease 180ms, transform 450ms ease 180ms;
+}
+
+.journey-option.active .journey-copy {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.journey-copy strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 21px;
+}
+
+.journey-copy small {
+  color: rgba(239, 244, 255, 0.74);
+  font-size: 13px;
+}
+
+.journeys-footer {
+  display: flex;
+  width: min(1220px, 100%);
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 28px auto 0;
+}
+
+.journeys-footer p {
+  margin: 0;
+  color: rgba(226, 239, 218, 0.64);
+  font-size: 13px;
+}
+
+.journeys-footer a {
+  border: 1px solid rgba(166, 220, 135, 0.48);
+  border-radius: 999px;
+  padding: 13px 19px;
+  background: rgba(125, 188, 99, 0.14);
+  color: #c5ee9f;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+.journeys-footer a:hover {
+  background: rgba(125, 188, 99, 0.24);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  .journeys-page {
+    padding-top: 124px;
+  }
+
+  .journey-selector {
+    height: 570px;
+    min-height: 0;
+    overflow-x: auto;
+    border-radius: 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .journey-option,
+  .journey-option.active {
+    min-width: 74vw;
+    flex: 0 0 74vw;
+    opacity: 0.78;
+    scroll-snap-align: center;
+  }
+
+  .journey-option.active {
+    opacity: 1;
+  }
+
+  .journey-copy {
+    min-width: 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  .journeys-footer {
+    display: grid;
+  }
+
+  .journeys-footer a {
+    justify-self: start;
+  }
+}

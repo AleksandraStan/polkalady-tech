@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
 
-export type PageName = "home" | "blog" | "portfolio";
+export type PageName = "home" | "about" | "blog" | "portfolio" | "journeys";
 
 interface SiteMenuProps {
   activePage: PageName;
@@ -10,8 +10,10 @@ interface SiteMenuProps {
 
 const icons = {
   home: "M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9 20v-6h6v6",
+  about: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-3 3-5 7-5s7 2 7 5",
   blog: "M5 4h14v16H5zM8 8h8M8 12h8M8 16h5",
   portfolio: "M4 7h16v12H4zM9 7V5h6v2M4 12h16M10 12v2h4v-2",
+  journeys: "M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-12 3 3-3 3-3-3 3-3Zm0-6v2m0 16v-2m9-7h-2M5 12H3",
 };
 
 const Icon = ({ name }: { name: keyof typeof icons }) => (
@@ -22,14 +24,17 @@ const Icon = ({ name }: { name: keyof typeof icons }) => (
 
 const menuItems: { icon: keyof typeof icons; label: string; page: PageName }[] = [
   { icon: "home", label: "Home", page: "home" },
+  { icon: "about", label: "About", page: "about" },
   { icon: "blog", label: "Blog", page: "blog" },
   { icon: "portfolio", label: "Portfolio", page: "portfolio" },
+  { icon: "journeys", label: "Journeys", page: "journeys" },
 ];
 
 export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dragX = useMotionValue(0);
   const dragOpacity = useTransform(dragX, [-200, 0], [0, 1]);
+  const logo = activePage === "journeys" ? "polkalady-logo-green.svg" : "polkalady-logo.svg";
 
   const navigate = (page: PageName) => {
     onNavigate(page);
@@ -51,7 +56,7 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
           <span />
         </motion.button>
         <button className="brand" onClick={() => navigate("home")}>
-          <img src={`${import.meta.env.BASE_URL}polkalady-logo.svg`} alt="" />
+          <img src={`${import.meta.env.BASE_URL}${logo}`} alt="" />
           <strong><span>Polka</span>Lady</strong>
         </button>
         <span className="header-mark">PL / 01</span>
@@ -99,7 +104,7 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
         <div className="menu-content">
           <p className="section-label">Navigate</p>
           <div className="menu-brand">
-            <img src={`${import.meta.env.BASE_URL}polkalady-logo.svg`} alt="" />
+            <img src={`${import.meta.env.BASE_URL}${logo}`} alt="" />
             <h2>Polka<span>Lady</span></h2>
           </div>
           <div className="menu-line" />
