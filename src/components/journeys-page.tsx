@@ -9,7 +9,7 @@ const journeys = [
     location: "La mia isola",
     image: "journeys/coastal-storm.jpg",
     icon: "wave",
-    url: "https://polkaladyjourneys.wordpress.com/la-mia-isola/",
+    url: "https://polkaladyjourneys.wordpress.com/portfolio-2/",
   },
   {
     title: "Athens, Greece",
@@ -33,7 +33,7 @@ const journeys = [
     url: "https://polkaladyjourneys.wordpress.com/2022/06/22/paradoxes-of-travelling-inside-of-small-volcanic-islands-santorini-in-greece/",
   },
   {
-    title: "Australia",
+    title: "New Zealand",
     location: "Why some places attract travellers",
     image: "journeys/rainforest.jpg",
     icon: "leaf",
@@ -104,7 +104,7 @@ export default function JourneysPage() {
         <h1>Stories shaped by <span>the road.</span></h1>
         <p>
           Open a frame, follow a memory, and continue into the original travel
-          journal while its new home is taking shape.
+          journal.
         </p>
       </div>
 
