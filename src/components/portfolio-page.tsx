@@ -58,8 +58,7 @@ export default function PortfolioPage() {
       <p className="section-label">Selected Work</p>
       <h1>Ideas made <span>visible.</span></h1>
       <p className="page-intro">
-        A collection of concepts where bold colour, clear thinking, and
-        digital atmosphere meet.
+        A collection of projects.
       </p>
       <div className="project-grid">
         {projects.map((project, index) => (
