@@ -60,12 +60,22 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="about-roles" aria-label="Professional roles">
-          <p className="about-index">CURRENT ROLES</p>
-          <span>IT Engineer</span>
-          <span>Artist &amp; Researcher</span>
-          <span>Content Creator</span>
-          <span>Professor</span>
+        <div className="about-aside">
+          <figure className="about-portrait">
+            <img
+              alt="Aleksandra sitting by the sea during a journey"
+              src={`${import.meta.env.BASE_URL}about/aleksandra-by-the-sea.jpg`}
+            />
+            <figcaption>Somewhere between land and sea</figcaption>
+          </figure>
+
+          <div className="about-roles" aria-label="Professional roles">
+            <p className="about-index">CURRENT ROLES</p>
+            <span>IT Engineer</span>
+            <span>Artist &amp; Researcher</span>
+            <span>Content Creator</span>
+            <span>Professor</span>
+          </div>
         </div>
       </div>
 

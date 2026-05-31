@@ -87,8 +87,32 @@
   line-height: 1.9;
 }
 
-.about-roles {
+.about-aside {
   align-self: start;
+}
+
+.about-portrait {
+  margin: 0 0 34px;
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.82;
+  border: 1px solid rgba(92, 225, 255, 0.24);
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.about-portrait figcaption {
+  margin-top: 11px;
+  color: rgba(237, 242, 255, 0.52);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-roles {
   border-left: 1px solid rgba(92, 225, 255, 0.23);
   padding-left: 25px;
 }
