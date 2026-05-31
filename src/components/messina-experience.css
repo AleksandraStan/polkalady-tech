@@ -39,6 +39,10 @@
   opacity: 1;
 }
 
+.messina-bg-chapter-1 {
+  object-position: center bottom;
+}
+
 .messina-vignette {
   background:
     linear-gradient(90deg, rgba(3, 18, 21, 0.52), transparent 37%, rgba(3, 18, 21, 0.22)),

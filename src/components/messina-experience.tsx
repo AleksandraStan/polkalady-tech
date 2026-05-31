@@ -121,7 +121,7 @@ export default function MessinaExperience() {
         />
         {chapters.map((chapter, index) => (
           <video
-            className={`messina-bg${activeIndex === index ? " active" : ""}`}
+            className={`messina-bg messina-bg-chapter-${index + 1}${activeIndex === index ? " active" : ""}`}
             key={chapter.video}
             loop
             muted
