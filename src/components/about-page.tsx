@@ -11,7 +11,7 @@ const interests = [
     number: "02",
     title: "Mapping Methods",
     description:
-      "Using maps, spatial thinking, and visual systems to make complex ideas tangible.",
+      "Using maps and visual systems to make complex ideas tangible.",
   },
   {
     number: "03",
@@ -56,9 +56,7 @@ export default function AboutPage() {
           </p>
           <p>
             In everyday life, I work as an IT engineer, content creator, and
-            professor. These roles meet in the same place: a fascination with
-            how technology can turn an abstract idea into something people can
-            explore, understand, and use.
+            professor.
           </p>
         </div>
 
@@ -87,7 +85,7 @@ export default function AboutPage() {
       <blockquote className="about-story">
         <p>
           I used to play the piano. At some point, I sold it to travel and
-          replaced it with a good computer.
+          replaced it with a good laptop.
         </p>
       </blockquote>
     </section>
