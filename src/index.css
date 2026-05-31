@@ -252,7 +252,7 @@ button {
 .hero-copy {
   position: absolute;
   z-index: 2;
-  top: 8vh;
+  top: clamp(132px, 18vh, 190px);
   left: 50%;
   width: min(740px, 84vw);
   translate: -50% 0;
@@ -545,7 +545,7 @@ h2 {
 
 @media (max-width: 767px) {
   .hero-copy {
-    top: 7vh;
+    top: 118px;
   }
 
   .hero-description {
