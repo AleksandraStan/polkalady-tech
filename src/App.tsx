@@ -9,9 +9,10 @@ const heroImage = `${import.meta.env.BASE_URL}website.png`;
 function App() {
   const [page, setPage] = useState<PageName>(() => {
     const hash = window.location.hash.slice(1);
-    return hash === "blog" || hash.startsWith("article/") || hash === "portfolio" || hash.startsWith("project/")
-      ? hash === "portfolio" ? "portfolio" : "blog"
-      : "home";
+    if (hash === "portfolio" || hash.startsWith("project/")) {
+      return "portfolio";
+    }
+    return hash === "blog" || hash.startsWith("article/") ? "blog" : "home";
   });
 
   useEffect(() => {
