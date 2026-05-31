@@ -51,9 +51,9 @@ export const projects: PortfolioProject[] = [
   {
         number: "03",
         slug: "beyond-ordinary",
-        title: "Beyond Ordinary",
-        category: "Digital Experience",
-        intro: "A cinematic web journey shaped by motion and atmosphere.",
+        title: "Traversée Experience",
+        category: "Immersive Travel Experience",
+        intro: "A cinematic crossing of the Strait of Messina, shaped by water, distance, and movement.",
         media: [{
                 type: "image",
                 src: "website.png",
@@ -62,7 +62,7 @@ export const projects: PortfolioProject[] = [
         sections: [{
                 heading: "An invitation to explore",
                 paragraphs: [
-                          "A bold hero image and quiet interface details create a digital experience that unfolds as you move through it.",
+                          "A boat-level experience of the Strait of Messina that unfolds as you move through the crossing.",
                         ],
         }],
   },

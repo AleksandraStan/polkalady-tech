@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=DM+Mono:wght@400;500&display=swap");
+
+.messina-experience {
+  --foam: #f2eee5;
+  --salt: rgba(242, 238, 229, 0.72);
+  --faint: rgba(242, 238, 229, 0.38);
+  --line: rgba(242, 238, 229, 0.25);
+  --sea: #193f48;
+  position: relative;
+  color: var(--foam);
+  background: #0d2c34;
+  font-family: "DM Mono", monospace;
+}
+
+.messina-stage {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background: #173c44;
+}
+
+.messina-bg,
+.messina-vignette,
+.messina-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.messina-bg {
+  opacity: 0;
+  object-fit: cover;
+  transition: opacity 1.3s ease;
+}
+
+.messina-bg.active {
+  opacity: 1;
+}
+
+.messina-vignette {
+  background:
+    linear-gradient(90deg, rgba(3, 18, 21, 0.52), transparent 37%, rgba(3, 18, 21, 0.22)),
+    linear-gradient(180deg, rgba(3, 18, 21, 0.22), transparent 48%, rgba(3, 18, 21, 0.54));
+}
+
+.messina-grain {
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.messina-intro,
+.messina-chapter,
+.messina-arrival {
+  position: relative;
+  z-index: 1;
+}
+
+.messina-intro {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 108px clamp(22px, 7vw, 108px) 34px;
+}
+
+.messina-intro-top,
+.messina-card-top,
+.messina-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.messina-intro p,
+.messina-arrival p,
+.messina-arrival span {
+  margin: 0;
+  color: var(--salt);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.messina-compass {
+  position: relative;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 9px;
+}
+
+.messina-compass i {
+  position: absolute;
+  bottom: 8px;
+  left: 26px;
+  width: 1px;
+  height: 17px;
+  background: var(--foam);
+  transform: rotate(24deg);
+  transform-origin: top;
+}
+
+.messina-title {
+  align-self: center;
+  width: min(920px, 100%);
+  padding-left: clamp(0px, 7vw, 92px);
+}
+
+.messina-title h1,
+.messina-chapter h2,
+.messina-arrival h2 {
+  margin: 0;
+  color: var(--foam);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: -0.075em;
+}
+
+.messina-title h1 {
+  display: grid;
+  margin-top: 8px;
+  font-size: clamp(96px, 18vw, 238px);
+  line-height: 0.66;
+}
+
+.messina-title h1 em {
+  font-weight: 500;
+}
+
+.messina-title h1 span {
+  padding-left: clamp(32px, 16vw, 220px);
+  color: var(--foam);
+  font-size: 0.45em;
+  font-style: normal;
+  letter-spacing: -0.035em;
+}
+
+.messina-title-foot {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 48px 0 0 clamp(32px, 16vw, 220px);
+}
+
+.messina-wave-mark {
+  width: 82px;
+  fill: none;
+  stroke: rgba(242, 238, 229, 0.66);
+  stroke-linecap: round;
+  stroke-width: 1;
+}
+
+.messina-scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--salt);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.messina-scroll-cue i {
+  width: 76px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--foam), transparent);
+}
+
+.messina-route {
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  right: clamp(12px, 3vw, 46px);
+  display: grid;
+  justify-items: center;
+  gap: 13px;
+  translate: 0 -50%;
+}
+
+.messina-route > span {
+  color: var(--salt);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+}
+
+.messina-route-line {
+  position: relative;
+  display: grid;
+  height: 154px;
+  align-content: space-between;
+  justify-items: center;
+}
+
+.messina-route-line::before,
+.messina-route-line > i {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  content: "";
+  translate: -50% 0;
+}
+
+.messina-route-line::before {
+  height: 100%;
+  background: var(--line);
+}
+
+.messina-route-line > i {
+  background: var(--foam);
+  transition: height 700ms ease;
+}
+
+.messina-route button {
+  z-index: 1;
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(11, 41, 47, 0.74);
+  color: var(--faint);
+  cursor: pointer;
+  transition: border-color 300ms ease, color 300ms ease, transform 300ms ease;
+}
+
+.messina-route button.active {
+  border-color: var(--foam);
+  color: var(--foam);
+  transform: scale(1.2);
+}
+
+.messina-route button b {
+  font-size: 7px;
+  font-weight: 500;
+}
+
+.messina-sound {
+  position: fixed;
+  z-index: 6;
+  right: clamp(22px, 4vw, 62px);
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 0;
+  background: transparent;
+  color: var(--salt);
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.messina-sound i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--foam);
+  border-radius: 50%;
+}
+
+.messina-sound i.active {
+  background: var(--foam);
+  box-shadow: 0 0 0 4px rgba(242, 238, 229, 0.18);
+}
+
+.messina-chapter {
+  display: flex;
+  min-height: 118vh;
+  align-items: center;
+  padding: 10vw clamp(22px, 9vw, 148px);
+}
+
+.chapter-2 {
+  justify-content: flex-end;
+}
+
+.chapter-3 {
+  align-items: flex-end;
+  padding-bottom: 16vh;
+}
+
+.chapter-4 {
+  justify-content: flex-end;
+}
+
+.messina-chapter-card {
+  width: min(430px, calc(100vw - 66px));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 17px 0 20px;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.42);
+}
+
+.messina-card-top,
+.messina-card-bottom {
+  color: var(--salt);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.messina-eyebrow {
+  margin: 82px 0 9px;
+  color: var(--salt);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.messina-chapter h2 {
+  max-width: 390px;
+  font-size: clamp(62px, 8vw, 102px);
+  line-height: 0.78;
+}
+
+.messina-card-bottom {
+  margin-top: 56px;
+}
+
+.messina-card-bottom .messina-wave-mark {
+  width: 60px;
+}
+
+.messina-arrival {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: center;
+  padding: 90px 28px;
+  background: rgba(6, 30, 35, 0.26);
+  text-align: center;
+}
+
+.messina-arrival h2 {
+  max-width: 820px;
+  margin: 12px 0 28px;
+  font-size: clamp(78px, 12vw, 174px);
+  line-height: 0.78;
+}
+
+body:has(.messina-experience) .site-header {
+  mix-blend-mode: screen;
+}
+
+body:has(.messina-experience) .header-mark {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+@media (max-width: 700px) {
+  .messina-intro {
+    padding-top: 104px;
+  }
+
+  .messina-title {
+    padding-left: 0;
+  }
+
+  .messina-title h1 {
+    font-size: clamp(88px, 29vw, 144px);
+  }
+
+  .messina-title h1 span {
+    padding-left: 34px;
+    font-size: 0.42em;
+  }
+
+  .messina-title-foot {
+    margin: 42px 0 0 36px;
+  }
+
+  .messina-title-foot p {
+    font-size: 8px;
+  }
+
+  .messina-route {
+    right: 10px;
+  }
+
+  .messina-sound {
+    right: 16px;
+    bottom: 18px;
+  }
+
+  .messina-chapter {
+    align-items: flex-end;
+    padding: 80px 38px 15vh 22px;
+  }
+
+  .chapter-2 {
+    justify-content: flex-start;
+  }
+}

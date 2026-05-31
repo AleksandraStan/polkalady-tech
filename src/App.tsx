@@ -8,20 +8,27 @@ import SiteMenu, { type PageName } from "./components/ui/site-menu";
 
 const heroImage = `${import.meta.env.BASE_URL}website.png`;
 
+function pageFromHash(hash: string): PageName {
+  if (hash === "portfolio" || hash.startsWith("project/")) {
+    return "portfolio";
+  }
+  if (hash === "journeys") {
+    return "journeys";
+  }
+  if (hash === "about") {
+    return "about";
+  }
+  return hash === "blog" || hash.startsWith("article/") ? "blog" : "home";
+}
+
 function App() {
-  const [page, setPage] = useState<PageName>(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash === "portfolio" || hash.startsWith("project/")) {
-      return "portfolio";
-    }
-    if (hash === "journeys") {
-      return "journeys";
-    }
-    if (hash === "about") {
-      return "about";
-    }
-    return hash === "blog" || hash.startsWith("article/") ? "blog" : "home";
-  });
+  const [page, setPage] = useState<PageName>(() => pageFromHash(window.location.hash.slice(1)));
+
+  useEffect(() => {
+    const syncPageToHash = () => setPage(pageFromHash(window.location.hash.slice(1)));
+    window.addEventListener("hashchange", syncPageToHash);
+    return () => window.removeEventListener("hashchange", syncPageToHash);
+  }, []);
 
   useEffect(() => {
     if (!window.location.hash.startsWith("#article/") && !window.location.hash.startsWith("#project/")) {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { projects } from "../content/projects";
 import MediaGallery from "./media-gallery";
+import MessinaExperience from "./messina-experience";
 import "./blog.css";
 
 export default function PortfolioPage() {
@@ -11,11 +12,24 @@ export default function PortfolioPage() {
   const activeProject = projects.find((project) => project.slug === projectSlug);
 
   useEffect(() => {
+    const syncProjectToHash = () => {
+      const hash = window.location.hash.slice(1);
+      setProjectSlug(hash.startsWith("project/") ? hash.replace("project/", "") : null);
+    };
+    window.addEventListener("hashchange", syncProjectToHash);
+    return () => window.removeEventListener("hashchange", syncProjectToHash);
+  }, []);
+
+  useEffect(() => {
     window.location.hash = projectSlug ? `project/${projectSlug}` : "portfolio";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectSlug]);
 
   if (activeProject) {
+    if (activeProject.slug === "beyond-ordinary") {
+      return <MessinaExperience />;
+    }
+
     return (
       <article className="content-page article-page">
         <button className="back-link" onClick={() => setProjectSlug(null)}>
@@ -55,9 +69,17 @@ export default function PortfolioPage() {
             onClick={() => setProjectSlug(project.slug)}
           >
             <div
-              className={`project-art project-art-${index + 1}`}
-              style={{ backgroundImage: `url(${import.meta.env.BASE_URL}website.png)` }}
-            />
+              className={`project-art project-art-${index + 1}${project.slug === "beyond-ordinary" ? " project-art-messina" : ""}`}
+              style={{
+                backgroundImage: project.slug === "beyond-ordinary"
+                  ? "none"
+                  : `url(${import.meta.env.BASE_URL}website.png)`,
+              }}
+            >
+              {project.slug === "beyond-ordinary" && (
+                <video autoPlay loop muted playsInline src={`${import.meta.env.BASE_URL}messina/departure.mp4`} />
+              )}
+            </div>
             <p>{project.category}</p>
             <h2>{project.title}</h2>
             <span>{project.intro}</span>
