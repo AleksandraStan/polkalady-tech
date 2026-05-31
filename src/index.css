@@ -194,7 +194,7 @@ button {
   list-style: none;
 }
 
-.side-menu li button {
+.side-menu li a {
   display: flex;
   width: 100%;
   align-items: center;
@@ -205,11 +205,12 @@ button {
   background: transparent;
   color: rgba(237, 242, 255, 0.78);
   cursor: pointer;
+  text-decoration: none;
   text-align: left;
 }
 
-.side-menu li button:hover,
-.side-menu li button.active {
+.side-menu li a:hover,
+.side-menu li a.active {
   border-color: rgba(92, 225, 255, 0.15);
   background: rgba(92, 225, 255, 0.08);
   color: white;

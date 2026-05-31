@@ -22,12 +22,12 @@ const Icon = ({ name }: { name: keyof typeof icons }) => (
   </svg>
 );
 
-const menuItems: { icon: keyof typeof icons; label: string; page: PageName }[] = [
-  { icon: "home", label: "Home", page: "home" },
-  { icon: "about", label: "About", page: "about" },
-  { icon: "blog", label: "Blog", page: "blog" },
-  { icon: "portfolio", label: "Portfolio", page: "portfolio" },
-  { icon: "journeys", label: "Journeys", page: "journeys" },
+const menuItems: { href: string; icon: keyof typeof icons; label: string; page: PageName }[] = [
+  { href: "#", icon: "home", label: "Home", page: "home" },
+  { href: "#about", icon: "about", label: "About Me", page: "about" },
+  { href: "#blog", icon: "blog", label: "Blog", page: "blog" },
+  { href: "#portfolio", icon: "portfolio", label: "Portfolio", page: "portfolio" },
+  { href: "#journeys", icon: "journeys", label: "Journeys", page: "journeys" },
 ];
 
 export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
@@ -37,6 +37,7 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
   const logo = activePage === "journeys" ? "polkalady-logo-green.svg" : "polkalady-logo.svg";
 
   const navigate = (page: PageName) => {
+    window.location.hash = page === "home" ? "" : page;
     onNavigate(page);
     setIsOpen(false);
   };
@@ -117,15 +118,16 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
                 animate={isOpen ? { x: 0, opacity: 1 } : { x: -40, opacity: 0 }}
                 transition={{ delay: 0.1 + index * 0.08 }}
               >
-                <button
+                <a
                   className={activePage === item.page ? "active" : ""}
+                  href={item.href}
                   onClick={() => navigate(item.page)}
                 >
                   <span className="icon-frame">
                     <Icon name={item.icon} />
                   </span>
                   {item.label}
-                </button>
+                </a>
               </motion.li>
             ))}
           </ul>
