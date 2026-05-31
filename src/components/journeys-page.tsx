@@ -5,64 +5,67 @@ const wordpressUrl = "https://polkaladyjourneys.wordpress.com/";
 
 const journeys = [
   {
-    title: "Coastal Storm",
-    location: "Mediterranean shores",
+    title: "Messina, Sicily",
+    location: "La mia isola",
     image: "journeys/coastal-storm.jpg",
     icon: "wave",
+    url: "https://polkaladyjourneys.wordpress.com/la-mia-isola/",
   },
   {
-    title: "Athens",
-    location: "Ancient theatre views",
+    title: "Athens, Greece",
+    location: "The Acropolis of Athens",
     image: "journeys/athens-theatre.jpg",
     icon: "landmark",
+    url: "https://polkaladyjourneys.wordpress.com/2026/04/19/ancient-treasure-and-top-tourist-attraction-the-acropolis-of-athens/",
   },
   {
-    title: "Koala Encounter",
-    location: "Australia up close",
-    image: "journeys/koala-encounter.jpg",
-    icon: "leaf",
-  },
-  {
-    title: "Santorini",
-    location: "White cliffs and blue sea",
-    image: "journeys/santorini.jpg",
-    icon: "sun",
-  },
-  {
-    title: "Rainforest",
-    location: "A walk beneath the canopy",
-    image: "journeys/rainforest.jpg",
-    icon: "leaf",
-  },
-  {
-    title: "Golden Beach",
-    location: "Sunset at the water's edge",
-    image: "journeys/golden-beach.jpg",
-    icon: "sun",
-  },
-  {
-    title: "Sunset Frame",
-    location: "Light over the water",
-    image: "journeys/sunset-frame.jpg",
-    icon: "sun",
-  },
-  {
-    title: "Mountain Lake",
-    location: "The road through the valley",
-    image: "journeys/mountain-lake.jpg",
-    icon: "mountain",
-  },
-  {
-    title: "Kangaroo",
-    location: "Wildlife in Australia",
+    title: "South Australia",
+    location: "Approaching the south",
     image: "journeys/kangaroo.jpg",
     icon: "leaf",
+    url: "https://polkaladyjourneys.wordpress.com/2018/01/08/arriving-to-south-australia/",
   },
   {
-    title: "Sydney",
-    location: "The harbour after dusk",
+    title: "Santorini, Greece",
+    location: "Inside a small volcanic island",
+    image: "journeys/santorini.jpg",
+    icon: "sun",
+    url: "https://polkaladyjourneys.wordpress.com/2022/06/22/paradoxes-of-travelling-inside-of-small-volcanic-islands-santorini-in-greece/",
+  },
+  {
+    title: "Australia",
+    location: "Why some places attract travellers",
+    image: "journeys/rainforest.jpg",
+    icon: "leaf",
+    url: "https://polkaladyjourneys.wordpress.com/2018/01/28/why-some-places-are-more-touristic-then-the-others/",
+  },
+  {
+    title: "Albania",
+    location: "A country still unfolding",
+    image: "journeys/golden-beach.jpg",
+    icon: "sun",
+    url: "https://polkaladyjourneys.wordpress.com/2021/09/02/albania-what-part-1/",
+  },
+  {
+    title: "Montenegro",
+    location: "Wild Beauty",
+    image: "journeys/mountain-lake.jpg",
+    icon: "mountain",
+    url: "https://polkaladyjourneys.wordpress.com/2020/10/04/montenegros-wild-beauty/",
+  },
+  {
+    title: "Royal National Park",
+    location: "Sydney, Australia",
+    image: "journeys/sunset-frame.jpg",
+    icon: "leaf",
+    url: "https://polkaladyjourneys.wordpress.com/2018/05/09/royal-national-park-in-sydney/",
+  },
+  {
+    title: "Sydney, Australia",
+    location: "A dialogue between design and sea",
     image: "journeys/sydney-opera-house.jpg",
     icon: "landmark",
+    url: "https://polkaladyjourneys.wordpress.com/2018/03/02/hypnotizing-dialogue-of-urban-landscape/",
   },
 ] as const;
 
@@ -109,17 +112,20 @@ export default function JourneysPage() {
         {journeys.map((journey, index) => {
           const isActive = activeIndex === index;
           return (
-            <button
-              aria-label={`${journey.title}: ${journey.location}`}
-              aria-pressed={isActive}
+            <div
               className={`journey-option${isActive ? " active" : ""}${index < visibleCount ? " visible" : ""}`}
               key={journey.title}
-              onClick={() => setActiveIndex(index)}
               style={{
                 backgroundImage: `url(${import.meta.env.BASE_URL}${journey.image})`,
               }}
-              type="button"
             >
+              <button
+                aria-label={`${journey.title}: ${journey.location}`}
+                aria-pressed={isActive}
+                className="journey-select"
+                onClick={() => setActiveIndex(index)}
+                type="button"
+              />
               <span className="journey-shade" />
               <span className="journey-label">
                 <span className="journey-icon">
@@ -128,9 +134,16 @@ export default function JourneysPage() {
                 <span className="journey-copy">
                   <strong>{journey.title}</strong>
                   <small>{journey.location}</small>
+                  <a
+                    href={journey.url}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Read story <span aria-hidden="true">&rarr;</span>
+                  </a>
                 </span>
               </span>
-            </button>
+            </div>
           );
         })}
       </div>

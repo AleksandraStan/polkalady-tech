@@ -65,6 +65,15 @@ body:has(.journeys-page) .side-menu h2 span {
     filter 500ms ease;
 }
 
+.journey-select {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .journey-option:last-child {
   border-right: 0;
 }
@@ -92,6 +101,7 @@ body:has(.journeys-page) .side-menu h2 span {
 
 .journey-label {
   position: absolute;
+  z-index: 2;
   right: 20px;
   bottom: 22px;
   left: 16px;
@@ -99,6 +109,7 @@ body:has(.journeys-page) .side-menu h2 span {
   align-items: center;
   gap: 12px;
   text-align: left;
+  pointer-events: none;
 }
 
 .journey-icon {
@@ -144,6 +155,22 @@ body:has(.journeys-page) .side-menu h2 span {
 .journey-copy small {
   color: rgba(239, 244, 255, 0.74);
   font-size: 13px;
+}
+
+.journey-copy a {
+  width: fit-content;
+  margin-top: 7px;
+  color: #c5ee9f;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.journey-copy a:hover {
+  color: white;
 }
 
 .journeys-footer {
