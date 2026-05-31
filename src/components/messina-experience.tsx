@@ -16,7 +16,7 @@ const chapters = [
   {
     number: "02",
     eyebrow: "Cast off",
-    title: "Leaving Messina",
+    title: "Leaving the island",
     location: "Sicilian coast",
     video: `${base}messina/open-water.mp4`,
     time: "01:28",
