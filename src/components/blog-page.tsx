@@ -50,6 +50,13 @@ export default function BlogPage() {
         Notes on design, technology, imagination, and the work of turning
         possibility into something you can experience.
       </p>
+      <aside className="page-notice">
+        <strong>Work in progress</strong>
+        <span>
+          This section is still taking shape. The articles are currently being
+          edited and refined.
+        </span>
+      </aside>
       <div className="article-list">
         {articles.map((article) => (
           <button

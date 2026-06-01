@@ -60,6 +60,14 @@ export default function PortfolioPage() {
       <p className="page-intro">
         A collection of projects.
       </p>
+      <aside className="page-notice">
+        <strong>Work in progress</strong>
+        <span>
+          Some of the content is currently being corrected. In the meantime,
+          you can open the Traversée Experience to watch the Messina project
+          trailer.
+        </span>
+      </aside>
       <div className="project-grid">
         {projects.map((project, index) => (
           <button

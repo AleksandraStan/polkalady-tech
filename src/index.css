@@ -381,6 +381,25 @@ h2 {
   line-height: 1.75;
 }
 
+.page-notice {
+  display: grid;
+  max-width: 720px;
+  gap: 7px;
+  margin: -30px 0 52px;
+  border-left: 2px solid #cf35ff;
+  padding: 12px 0 12px 18px;
+  color: rgba(238, 239, 255, 0.64);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.page-notice strong {
+  color: #5ce1ff;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
 .article-list {
   max-width: 980px;
 }
