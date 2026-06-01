@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackEvent } from "../lib/analytics";
 import "./journeys.css";
 
 const wordpressUrl = "https://polkaladyjourneys.wordpress.com/";
@@ -136,6 +137,7 @@ export default function JourneysPage() {
                   <small>{journey.location}</small>
                   <a
                     href={journey.url}
+                    onClick={() => trackEvent("open_journey_story", { destination: journey.title })}
                     rel="noreferrer"
                     target="_blank"
                   >

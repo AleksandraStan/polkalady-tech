@@ -1,11 +1,9 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
-
-export type PageName = "home" | "about" | "blog" | "portfolio" | "journeys";
+import { navigateTo, pagePaths, type PageName } from "../../lib/navigation";
 
 interface SiteMenuProps {
   activePage: PageName;
-  onNavigate: (page: PageName) => void;
 }
 
 const icons = {
@@ -23,22 +21,21 @@ const Icon = ({ name }: { name: keyof typeof icons }) => (
 );
 
 const menuItems: { href: string; icon: keyof typeof icons; label: string; page: PageName }[] = [
-  { href: "#", icon: "home", label: "Home", page: "home" },
-  { href: "#about", icon: "about", label: "About Me", page: "about" },
-  { href: "#blog", icon: "blog", label: "Blog", page: "blog" },
-  { href: "#portfolio", icon: "portfolio", label: "Portfolio", page: "portfolio" },
-  { href: "#journeys", icon: "journeys", label: "Journeys", page: "journeys" },
+  { href: pagePaths.home, icon: "home", label: "Home", page: "home" },
+  { href: pagePaths.about, icon: "about", label: "About Me", page: "about" },
+  { href: pagePaths.blog, icon: "blog", label: "Blog", page: "blog" },
+  { href: pagePaths.portfolio, icon: "portfolio", label: "Portfolio", page: "portfolio" },
+  { href: pagePaths.journeys, icon: "journeys", label: "Journeys", page: "journeys" },
 ];
 
-export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
+export default function SiteMenu({ activePage }: SiteMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dragX = useMotionValue(0);
   const dragOpacity = useTransform(dragX, [-200, 0], [0, 1]);
   const logo = activePage === "journeys" ? "polkalady-logo-green.svg" : "polkalady-logo.svg";
 
   const navigate = (page: PageName) => {
-    window.location.hash = page === "home" ? "" : page;
-    onNavigate(page);
+    navigateTo(pagePaths[page]);
     setIsOpen(false);
   };
 
@@ -56,10 +53,13 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
           <span />
           <span />
         </motion.button>
-        <button className="brand" onClick={() => navigate("home")}>
+        <a className="brand" href={pagePaths.home} onClick={(event) => {
+          event.preventDefault();
+          navigate("home");
+        }}>
           <img src={`${import.meta.env.BASE_URL}${logo}`} alt="" />
           <strong><span>Polka</span>Lady</strong>
-        </button>
+        </a>
         <span className="header-mark">PL / 01</span>
       </header>
 
@@ -121,7 +121,10 @@ export default function SiteMenu({ activePage, onNavigate }: SiteMenuProps) {
                 <a
                   className={activePage === item.page ? "active" : ""}
                   href={item.href}
-                  onClick={() => navigate(item.page)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigate(item.page);
+                  }}
                 >
                   <span className="icon-frame">
                     <Icon name={item.icon} />

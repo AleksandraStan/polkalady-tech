@@ -1,47 +1,39 @@
 import { useEffect, useState } from "react";
 import AboutPage from "./components/about-page";
+import AnalyticsConsent from "./components/analytics-consent";
 import BlogPage from "./components/blog-page";
 import JourneysPage from "./components/journeys-page";
 import PortfolioPage from "./components/portfolio-page";
 import SmoothScrollHero from "./components/ui/smooth-scroll-hero";
-import SiteMenu, { type PageName } from "./components/ui/site-menu";
+import SiteMenu from "./components/ui/site-menu";
+import { initializeAnalytics, trackPageView } from "./lib/analytics";
+import { routeFromLocation, type SiteRoute } from "./lib/navigation";
+import { metadataForRoute, updateMetadata } from "./lib/seo";
 
 const heroImage = `${import.meta.env.BASE_URL}website.png`;
 
-function pageFromHash(hash: string): PageName {
-  if (hash === "portfolio" || hash.startsWith("project/")) {
-    return "portfolio";
-  }
-  if (hash === "journeys") {
-    return "journeys";
-  }
-  if (hash === "about") {
-    return "about";
-  }
-  return hash === "blog" || hash.startsWith("article/") ? "blog" : "home";
-}
-
 function App() {
-  const [page, setPage] = useState<PageName>(() => pageFromHash(window.location.hash.slice(1)));
+  const [route, setRoute] = useState<SiteRoute>(() => routeFromLocation());
 
   useEffect(() => {
-    const syncPageToHash = () => setPage(pageFromHash(window.location.hash.slice(1)));
-    window.addEventListener("hashchange", syncPageToHash);
-    return () => window.removeEventListener("hashchange", syncPageToHash);
+    initializeAnalytics();
+    const syncRoute = () => setRoute(routeFromLocation());
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
   }, []);
 
   useEffect(() => {
-    if (!window.location.hash.startsWith("#article/") && !window.location.hash.startsWith("#project/")) {
-      window.location.hash = page === "home" ? "" : page;
-    }
+    const metadata = metadataForRoute(route);
+    updateMetadata(route);
+    trackPageView(window.location.pathname, metadata.title);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [page]);
+  }, [route]);
 
   return (
     <>
-      <SiteMenu activePage={page} onNavigate={setPage} />
+      <SiteMenu activePage={route.page} />
       <main>
-        {page === "home" && (
+        {route.page === "home" && (
           <>
             <section className="hero-section">
               <div className="hero-copy">
@@ -74,14 +66,15 @@ function App() {
           </>
         )}
 
-        {page === "blog" && <BlogPage />}
+        {route.page === "blog" && <BlogPage articleSlug={route.articleSlug} />}
 
-        {page === "portfolio" && <PortfolioPage />}
+        {route.page === "portfolio" && <PortfolioPage projectSlug={route.projectSlug} />}
 
-        {page === "journeys" && <JourneysPage />}
+        {route.page === "journeys" && <JourneysPage />}
 
-        {page === "about" && <AboutPage />}
+        {route.page === "about" && <AboutPage />}
       </main>
+      <AnalyticsConsent />
     </>
   );
 }

@@ -1,29 +1,12 @@
-import { useEffect, useState } from "react";
 import { projects } from "../content/projects";
+import { trackEvent } from "../lib/analytics";
+import { navigateTo, pagePaths, projectPath } from "../lib/navigation";
 import MediaGallery from "./media-gallery";
 import MessinaExperience from "./messina-experience";
 import "./blog.css";
 
-export default function PortfolioPage() {
-  const initialHash = window.location.hash.slice(1);
-  const [projectSlug, setProjectSlug] = useState<string | null>(
-    initialHash.startsWith("project/") ? initialHash.replace("project/", "") : null,
-  );
+export default function PortfolioPage({ projectSlug }: { projectSlug?: string }) {
   const activeProject = projects.find((project) => project.slug === projectSlug);
-
-  useEffect(() => {
-    const syncProjectToHash = () => {
-      const hash = window.location.hash.slice(1);
-      setProjectSlug(hash.startsWith("project/") ? hash.replace("project/", "") : null);
-    };
-    window.addEventListener("hashchange", syncProjectToHash);
-    return () => window.removeEventListener("hashchange", syncProjectToHash);
-  }, []);
-
-  useEffect(() => {
-    window.location.hash = projectSlug ? `project/${projectSlug}` : "portfolio";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [projectSlug]);
 
   if (activeProject) {
     if (activeProject.slug === "beyond-ordinary") {
@@ -32,7 +15,7 @@ export default function PortfolioPage() {
 
     return (
       <article className="content-page article-page">
-        <button className="back-link" onClick={() => setProjectSlug(null)}>
+        <button className="back-link" onClick={() => navigateTo(pagePaths.portfolio)}>
           &larr; Back to portfolio
         </button>
         <p className="section-label">{activeProject.category}</p>
@@ -70,10 +53,18 @@ export default function PortfolioPage() {
       </aside>
       <div className="project-grid">
         {projects.map((project, index) => (
-          <button
+          <a
             className="project-preview"
+            href={projectPath(project.slug)}
             key={project.slug}
-            onClick={() => setProjectSlug(project.slug)}
+            onClick={(event) => {
+              event.preventDefault();
+              trackEvent("open_portfolio_project", { project_slug: project.slug });
+              if (project.slug === "beyond-ordinary") {
+                trackEvent("open_messina_experience");
+              }
+              navigateTo(projectPath(project.slug));
+            }}
           >
             <div
               className={`project-art project-art-${index + 1}${project.slug === "beyond-ordinary" ? " project-art-messina" : ""}`}
@@ -91,7 +82,7 @@ export default function PortfolioPage() {
             <h2>{project.title}</h2>
             <span>{project.intro}</span>
             <b>Open project &rarr;</b>
-          </button>
+          </a>
         ))}
       </div>
     </section>

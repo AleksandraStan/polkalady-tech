@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "../lib/analytics";
 import "./messina-experience.css";
 
 const base = import.meta.env.BASE_URL;
@@ -159,7 +160,11 @@ export default function MessinaExperience() {
       <button
         aria-label={soundOn ? "Mute ambient sound" : "Play ambient sound"}
         className="messina-sound"
-        onClick={() => setSoundOn((current) => !current)}
+        onClick={() => setSoundOn((current) => {
+          const next = !current;
+          trackEvent(next ? "enable_sound" : "disable_sound", { experience: "traversee_messina" });
+          return next;
+        })}
         type="button"
       >
         <span>{soundOn ? "Sound on" : "Listen"}</span>

@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
 import { articles } from "../content/articles";
+import { articlePath, navigateTo, pagePaths } from "../lib/navigation";
 import MediaGallery from "./media-gallery";
 import "./blog.css";
 
-export default function BlogPage() {
-  const initialHash = window.location.hash.slice(1);
-  const [articleSlug, setArticleSlug] = useState<string | null>(
-    initialHash.startsWith("article/") ? initialHash.replace("article/", "") : null,
-  );
+export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
   const activeArticle = articles.find((article) => article.slug === articleSlug);
-
-  useEffect(() => {
-    window.location.hash = articleSlug ? `article/${articleSlug}` : "blog";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [articleSlug]);
 
   if (activeArticle) {
     return (
       <article className="content-page article-page">
-        <button className="back-link" onClick={() => setArticleSlug(null)}>
+        <button className="back-link" onClick={() => navigateTo(pagePaths.blog)}>
           &larr; Back to journal
         </button>
         <p className="section-label">
@@ -59,10 +50,14 @@ export default function BlogPage() {
       </aside>
       <div className="article-list">
         {articles.map((article) => (
-          <button
+          <a
             className="article-preview"
+            href={articlePath(article.slug)}
             key={article.slug}
-            onClick={() => setArticleSlug(article.slug)}
+            onClick={(event) => {
+              event.preventDefault();
+              navigateTo(articlePath(article.slug));
+            }}
           >
             <span>{article.number}</span>
             <div>
@@ -70,7 +65,7 @@ export default function BlogPage() {
               <h2>{article.title}</h2>
             </div>
             <b>&rarr;</b>
-          </button>
+          </a>
         ))}
       </div>
     </section>
