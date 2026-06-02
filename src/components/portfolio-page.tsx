@@ -1,16 +1,25 @@
 import { projects } from "../content/projects";
 import { trackEvent } from "../lib/analytics";
 import { navigateTo, pagePaths, projectPath } from "../lib/navigation";
+import CompassPage from "./compass-page";
 import MediaGallery from "./media-gallery";
 import MessinaExperience from "./messina-experience";
 import "./blog.css";
 
 export default function PortfolioPage({ projectSlug }: { projectSlug?: string }) {
+  if (projectSlug === "time-geography-compass") {
+    return <CompassPage />;
+  }
+
   const activeProject = projects.find((project) => project.slug === projectSlug);
 
   if (activeProject) {
     if (activeProject.slug === "beyond-ordinary") {
       return <MessinaExperience />;
+    }
+
+    if (activeProject.slug === "connected-cities") {
+      return <CompassPage />;
     }
 
     return (
@@ -67,7 +76,7 @@ export default function PortfolioPage({ projectSlug }: { projectSlug?: string })
             }}
           >
             <div
-              className={`project-art project-art-${index + 1}${project.slug === "beyond-ordinary" ? " project-art-messina" : ""}`}
+              className={`project-art project-art-${index + 1}${project.slug === "beyond-ordinary" ? " project-art-messina" : ""}${project.slug === "connected-cities" || project.slug === "time-geography-compass" ? " project-art-compass" : ""}`}
               style={{
                 backgroundImage: project.slug === "beyond-ordinary"
                   ? "none"

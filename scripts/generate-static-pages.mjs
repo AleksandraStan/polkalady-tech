@@ -30,9 +30,9 @@ const projects = [
     title: "Digital travelling",
   },
   {
-    description: "A luminous interface for stories of future urban life.",
+    description: "A compass of European cities connected by distance and direction.",
     path: "/portfolio/connected-cities/",
-    title: "Connected Cities",
+    title: "Connected Cities - European Compass",
   },
 ];
 

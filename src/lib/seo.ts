@@ -22,6 +22,13 @@ export function metadataForRoute(route: SiteRoute) {
     };
   }
 
+  if (route.page === "compass") {
+    return {
+      description: "Explore Connected Cities - European Compass, an interactive compass of European city connections by distance and direction.",
+      title: "Connected Cities - European Compass | PolkaLady Portfolio",
+    };
+  }
+
   if (route.articleSlug) {
     const article = articles.find(({ slug }) => slug === route.articleSlug);
     if (article) return { description: article.intro, title: `${article.title} | PolkaLady` };

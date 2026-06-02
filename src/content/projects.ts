@@ -33,9 +33,9 @@ export const projects: PortfolioProject[] = [
   {
         number: "02",
         slug: "connected-cities",
-        title: "Connected Cities",
-        category: "Concept Design",
-        intro: "A luminous interface for stories of future urban life.",
+        title: "Connected Cities - European Compass",
+        category: "Interactive Mapping",
+        intro: "A compass of European cities connected by distance and direction.",
         media: [{
                 type: "image",
                 src: "website.png",
@@ -44,7 +44,7 @@ export const projects: PortfolioProject[] = [
         sections: [{
                 heading: "Networks made visible",
                 paragraphs: [
-                          "The visual language connects urban scale with a sense of movement, energy, and shared possibility.",
+                          "The compass connects European cities by bearing, distance, and estimated access time.",
                         ],
         }],
   },

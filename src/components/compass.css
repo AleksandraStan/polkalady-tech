@@ -1,0 +1,375 @@
+.compass-page {
+  min-height: 100vh;
+  padding: clamp(122px, 15vh, 174px) clamp(18px, 6vw, 92px) 70px;
+  background:
+    linear-gradient(rgba(118, 214, 201, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 214, 201, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 78% 12%, rgba(222, 169, 72, 0.19), transparent 32%),
+    radial-gradient(circle at 12% 70%, rgba(62, 173, 154, 0.2), transparent 32%),
+    #030716;
+  background-size: 56px 56px, 56px 56px, auto, auto, auto;
+}
+
+.compass-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(330px, 1.1fr);
+  gap: clamp(34px, 6vw, 76px);
+  align-items: center;
+}
+
+.compass-copy {
+  max-width: 650px;
+}
+
+.compass-back {
+  margin-bottom: 32px;
+}
+
+.compass-copy h1 {
+  max-width: 690px;
+  font-size: clamp(48px, 7vw, 102px);
+  line-height: 0.92;
+}
+
+.compass-copy h1 span {
+  color: #f0b85c;
+}
+
+.compass-copy > p:last-child {
+  max-width: 520px;
+  margin: 25px 0 0;
+  color: rgba(241, 246, 244, 0.68);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.compass-workbench {
+  display: grid;
+  gap: 18px;
+}
+
+.compass-instrument {
+  position: relative;
+  display: grid;
+  width: min(620px, 100%);
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(240, 184, 92, 0.22);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 54px rgba(0, 0, 0, 0.48),
+    0 32px 90px rgba(0, 0, 0, 0.34);
+  touch-action: none;
+}
+
+.compass-instrument::before,
+.compass-instrument::after {
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(240, 184, 92, 0.18);
+  border-radius: 50%;
+  content: "";
+}
+
+.compass-instrument::after {
+  inset: 18%;
+  border-color: rgba(139, 222, 210, 0.16);
+}
+
+.compass-ring {
+  position: absolute;
+  inset: 7%;
+  border-radius: 50%;
+}
+
+.compass-ring::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(240, 184, 92, 0.34) 0deg 1deg, transparent 1deg 10deg),
+    radial-gradient(circle, transparent 57%, rgba(240, 184, 92, 0.08) 58%, transparent 60%);
+  content: "";
+  opacity: 0.82;
+}
+
+.compass-rays {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.compass-ray {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 30px;
+  height: var(--ray-length);
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  box-shadow: 0 0 16px rgba(139, 222, 210, 0.16);
+  transform: translateX(-50%) rotate(var(--ray-bearing));
+  transform-origin: 50% 100%;
+  transition: width 180ms ease;
+}
+
+.compass-ray::before {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(0deg, rgba(139, 222, 210, 0.14), rgba(139, 222, 210, 0.62));
+  box-shadow: 0 0 16px rgba(139, 222, 210, 0.16);
+  content: "";
+  translate: -50% 0;
+  transition: background 180ms ease, box-shadow 180ms ease, width 180ms ease;
+}
+
+.compass-ray.active::before,
+.compass-ray:hover::before,
+.compass-ray:focus-visible::before {
+  width: 4px;
+  background: linear-gradient(0deg, rgba(240, 184, 92, 0.2), rgba(233, 75, 95, 0.88));
+  box-shadow: 0 0 24px rgba(233, 75, 95, 0.32);
+}
+
+.compass-ray span {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  min-width: 124px;
+  border: 1px solid rgba(240, 184, 92, 0.44);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: rgba(7, 17, 34, 0.9);
+  color: #fff5dc;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateX(-50%) rotate(var(--ray-counter-bearing)) translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.compass-ray small {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  color: rgba(139, 222, 210, 0.72);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translateX(-50%) rotate(var(--ray-counter-bearing));
+}
+
+.compass-ray:hover span,
+.compass-ray:focus-visible span {
+  opacity: 1;
+  transform: translateX(-50%) rotate(var(--ray-counter-bearing)) translateY(0);
+}
+
+.compass-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding-top: 6px;
+  color: #f8d99a;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(18px, 3vw, 34px);
+  font-weight: 700;
+}
+
+.compass-center {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: clamp(88px, 16vw, 128px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(240, 184, 92, 0.34);
+  border-radius: 50%;
+  background: rgba(4, 8, 18, 0.86);
+  box-shadow: 0 0 34px rgba(0, 0, 0, 0.42);
+}
+
+.compass-center strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(22px, 4vw, 34px);
+}
+
+.compass-center span {
+  margin-top: -28px;
+  color: rgba(139, 222, 210, 0.74);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.compass-panel {
+  display: grid;
+  max-width: 1080px;
+  gap: 12px;
+  margin-top: clamp(34px, 6vw, 70px);
+  border-top: 1px solid rgba(139, 222, 210, 0.18);
+  padding-top: 28px;
+}
+
+.compass-panel h2 {
+  color: #fff5dc;
+  font-size: clamp(32px, 5vw, 58px);
+}
+
+.compass-panel > p:not(.section-label) {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(241, 246, 244, 0.66);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.journey-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 2px 0 4px;
+}
+
+.journey-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(139, 222, 210, 0.16);
+  border-radius: 8px;
+  padding: 0;
+  background: rgba(7, 17, 34, 0.48);
+  color: rgba(255, 245, 220, 0.82);
+}
+
+.journey-icon {
+  width: 12px;
+  height: 12px;
+  stroke: #8bded2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.compass-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 6px 0 0;
+}
+
+.compass-meta div {
+  min-width: min(230px, 100%);
+  border-left: 1px solid rgba(240, 184, 92, 0.48);
+  padding-left: 13px;
+}
+
+.compass-meta dt {
+  color: #8bded2;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.compass-meta dd {
+  margin: 5px 0 0;
+  color: rgba(255, 245, 220, 0.82);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+}
+
+.accessibility-scale {
+  width: min(520px, 100%);
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 222, 210, 0.18);
+  border-radius: 999px;
+  background: rgba(7, 17, 34, 0.78);
+}
+
+.accessibility-scale span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8bded2, #f0b85c, #e94b5f);
+}
+
+.route-note {
+  display: grid;
+  max-width: 680px;
+  gap: 6px;
+  color: rgba(241, 246, 244, 0.64);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.route-note strong {
+  color: #f8d99a;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-top: 4px;
+  color: rgba(241, 246, 244, 0.62);
+  font-size: 13px;
+}
+
+.source-list strong {
+  color: #f8d99a;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.source-list a {
+  color: rgba(139, 222, 210, 0.82);
+}
+
+@media (max-width: 900px) {
+  .compass-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .compass-instrument {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .compass-page {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .compass-ray span {
+    min-width: 96px;
+    font-size: 8px;
+  }
+}
