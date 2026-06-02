@@ -328,6 +328,11 @@
   line-height: 0.78;
 }
 
+.chapter-1 h2 {
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 0.88;
+}
+
 .messina-card-bottom {
   margin-top: 56px;
 }
@@ -351,6 +356,558 @@
   margin: 12px 0 28px;
   font-size: clamp(78px, 12vw, 174px);
   line-height: 0.78;
+}
+
+.traffic-lab {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(620px, 1.5fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(90px, 11vw, 164px) clamp(22px, 7vw, 108px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 36%, rgba(100, 184, 177, 0.13), transparent 26%),
+    linear-gradient(135deg, rgba(3, 23, 27, 0.98), rgba(9, 43, 48, 0.97));
+}
+
+.traffic-lab::before {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(242, 238, 229, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 238, 229, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  content: "";
+  pointer-events: none;
+}
+
+.traffic-lab-heading,
+.traffic-console {
+  position: relative;
+}
+
+.traffic-lab-heading p,
+.traffic-console p,
+.traffic-console span,
+.traffic-console b {
+  margin: 0;
+  color: var(--salt);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.traffic-lab-heading h2 {
+  margin: 20px 0 24px;
+  color: var(--foam);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(72px, 8vw, 124px);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.77;
+}
+
+.traffic-lab-heading h2 em {
+  font-weight: 500;
+}
+
+.traffic-lab-heading > span {
+  display: block;
+  max-width: 390px;
+  color: rgba(242, 238, 229, 0.65);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.traffic-console {
+  border: 1px solid rgba(242, 238, 229, 0.2);
+  background: rgba(4, 27, 31, 0.72);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(20px);
+}
+
+.traffic-console-top,
+.traffic-mode-switch,
+.traffic-controls,
+.traffic-metrics {
+  display: flex;
+  align-items: center;
+}
+
+.traffic-console-top {
+  justify-content: space-between;
+  padding: 17px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.traffic-console-top span {
+  color: var(--faint);
+  font-size: 8px;
+}
+
+.traffic-console-top > b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b8e2d3;
+  font-size: 8px;
+}
+
+.traffic-console-top > b i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9ed8c2;
+  box-shadow: 0 0 0 4px rgba(158, 216, 194, 0.12);
+}
+
+.traffic-mode-switch {
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.traffic-mode-switch button,
+.traffic-controls button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--faint);
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: 220ms ease;
+}
+
+.traffic-mode-switch button {
+  flex: 1;
+  padding: 12px;
+  text-align: left;
+}
+
+.traffic-mode-switch button span {
+  margin-right: 10px;
+  color: inherit;
+  font-size: 8px;
+}
+
+.traffic-mode-switch button.active,
+.traffic-controls button.active {
+  border-color: rgba(242, 238, 229, 0.34);
+  background: rgba(242, 238, 229, 0.08);
+  color: var(--foam);
+}
+
+.traffic-map {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.traffic-coast {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 24%;
+  background:
+    linear-gradient(120deg, transparent 0 38%, rgba(213, 222, 191, 0.11) 38% 39%, transparent 39%),
+    linear-gradient(40deg, transparent 0 56%, rgba(213, 222, 191, 0.1) 56% 57%, transparent 57%),
+    rgba(152, 174, 139, 0.14);
+}
+
+.traffic-coast-sicily {
+  left: 0;
+  border-right: 1px solid rgba(206, 225, 215, 0.24);
+}
+
+.traffic-coast-calabria {
+  right: 0;
+  border-left: 1px solid rgba(206, 225, 215, 0.24);
+}
+
+.traffic-coast span {
+  position: absolute;
+  top: 18px;
+  color: rgba(242, 238, 229, 0.56);
+  font-size: 8px;
+}
+
+.traffic-coast-sicily span {
+  left: 18px;
+}
+
+.traffic-coast-calabria span {
+  right: 18px;
+}
+
+.traffic-water {
+  position: absolute;
+  inset: 0 24%;
+  overflow: hidden;
+  background: rgba(40, 106, 113, 0.12);
+}
+
+.traffic-water b {
+  position: absolute;
+  left: 14px;
+  bottom: 15px;
+  color: rgba(242, 238, 229, 0.38);
+  font-size: 7px;
+}
+
+.traffic-water i {
+  position: absolute;
+  width: 140%;
+  height: 36px;
+  border-top: 1px solid rgba(201, 234, 225, 0.12);
+  border-radius: 50%;
+  animation: traffic-current 8s linear infinite;
+}
+
+.traffic-water i:nth-of-type(1) {
+  top: 22%;
+  left: -15%;
+}
+
+.traffic-water i:nth-of-type(2) {
+  top: 50%;
+  left: -42%;
+  animation-delay: -2.6s;
+}
+
+.traffic-water i:nth-of-type(3) {
+  top: 74%;
+  left: -8%;
+  animation-delay: -5.2s;
+}
+
+.traffic-route,
+.traffic-route-line,
+.traffic-bridge-deck {
+  position: absolute;
+  left: 8%;
+  width: 84%;
+}
+
+.traffic-route {
+  z-index: 3;
+  top: 50%;
+  height: 54px;
+  translate: 0 -50%;
+}
+
+.traffic-route-line {
+  top: 26px;
+  border-top: 1px dashed rgba(242, 238, 229, 0.34);
+}
+
+.traffic-bridge-deck {
+  top: 14px;
+  height: 25px;
+  border-top: 1px solid rgba(242, 238, 229, 0.72);
+  border-bottom: 1px solid rgba(242, 238, 229, 0.72);
+  background: rgba(242, 238, 229, 0.07);
+  box-shadow: 0 0 22px rgba(177, 223, 214, 0.12);
+}
+
+.traffic-bridge-deck span {
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  color: rgba(242, 238, 229, 0.58);
+  font-size: 7px;
+  letter-spacing: 0.16em;
+  translate: -50% 0;
+  white-space: nowrap;
+}
+
+.traffic-terminal {
+  position: absolute;
+  top: 1px;
+  width: 58px;
+  padding-top: 39px;
+  color: var(--faint);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.traffic-terminal::before {
+  position: absolute;
+  top: 9px;
+  left: 6px;
+  width: 44px;
+  height: 25px;
+  border: 1px solid rgba(242, 238, 229, 0.46);
+  background: rgba(242, 238, 229, 0.06);
+  content: "";
+}
+
+.traffic-terminal-sicily {
+  left: 14%;
+}
+
+.traffic-terminal-calabria {
+  right: 14%;
+}
+
+.traffic-ferry {
+  position: absolute;
+  display: grid;
+  width: 58px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid rgba(242, 238, 229, 0.7);
+  background: rgba(24, 70, 76, 0.96);
+}
+
+.traffic-ferry i {
+  position: absolute;
+  width: 15px;
+  border-top: 1px solid rgba(202, 237, 229, 0.5);
+}
+
+.traffic-ferry-east {
+  top: 1px;
+  left: 24%;
+  animation: traffic-ferry-crossing-east 8.8s ease-in-out infinite;
+}
+
+.traffic-ferry-east i {
+  right: -16px;
+}
+
+.traffic-ferry-west {
+  right: 24%;
+  bottom: 1px;
+  animation: traffic-ferry-crossing-west 8.8s ease-in-out infinite;
+}
+
+.traffic-ferry-west i {
+  left: -16px;
+}
+
+.traffic-ferry b {
+  color: var(--foam);
+  font-size: 7px;
+}
+
+.traffic-vehicle {
+  position: absolute;
+  z-index: 4;
+  width: 15px;
+  height: 7px;
+  border: 1px solid rgba(242, 238, 229, 0.86);
+  border-radius: 1px;
+  background: #d6d8c1;
+  box-shadow: 0 0 9px rgba(239, 231, 188, 0.34);
+}
+
+.traffic-vehicle::before,
+.traffic-vehicle::after {
+  position: absolute;
+  bottom: -3px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #071f23;
+  content: "";
+}
+
+.traffic-vehicle::before {
+  left: 2px;
+}
+
+.traffic-vehicle::after {
+  right: 2px;
+}
+
+.traffic-vehicle-bridge {
+  top: calc(19px + var(--car-lane) * 14px);
+  animation-delay: var(--car-delay);
+}
+
+.traffic-vehicle-bridge.traffic-vehicle-east {
+  left: -15px;
+  animation-name: traffic-bridge-flow-east;
+  animation-duration: var(--car-speed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.traffic-vehicle-bridge.traffic-vehicle-west {
+  right: -15px;
+  animation-name: traffic-bridge-flow-west;
+  animation-duration: var(--car-speed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.traffic-vehicle-current {
+  top: calc(2px + var(--car-lane) * 17px);
+}
+
+.traffic-vehicle-current.traffic-vehicle-east {
+  left: calc(11% + var(--queue-row) * 18px);
+}
+
+.traffic-vehicle-current.traffic-vehicle-west {
+  right: calc(11% + var(--queue-row) * 18px);
+}
+
+.traffic-vehicle-hidden {
+  display: none;
+}
+
+.traffic-map-note {
+  position: absolute;
+  z-index: 5;
+  right: 18px;
+  bottom: 16px;
+  display: grid;
+  justify-items: end;
+}
+
+.traffic-map-note b {
+  color: var(--foam);
+  font-size: 8px;
+}
+
+.traffic-map-note span {
+  color: var(--faint);
+  font-size: 7px;
+}
+
+.traffic-controls {
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.traffic-controls > div {
+  display: flex;
+  gap: 6px;
+}
+
+.traffic-controls button {
+  padding: 7px 10px;
+  font-size: 8px;
+}
+
+.traffic-metrics > div {
+  flex: 1;
+  min-width: 0;
+  padding: 17px 18px 16px;
+  border-right: 1px solid var(--line);
+}
+
+.traffic-metrics > div:last-child {
+  border-right: 0;
+}
+
+.traffic-metrics span,
+.traffic-metrics strong {
+  display: block;
+}
+
+.traffic-metrics span {
+  color: var(--faint);
+  font-size: 7px;
+}
+
+.traffic-metrics strong {
+  margin-top: 8px;
+  color: var(--foam);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.traffic-metrics small {
+  margin-left: 4px;
+  color: var(--salt);
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.traffic-disclaimer {
+  padding: 0 18px 15px;
+  color: rgba(242, 238, 229, 0.34) !important;
+  font-size: 7px !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.5 !important;
+  text-transform: none !important;
+}
+
+@keyframes traffic-current {
+  to {
+    translate: 26% 0;
+  }
+}
+
+@keyframes traffic-ferry-crossing-east {
+  0%, 20% {
+    left: 24%;
+  }
+
+  72%, 100% {
+    left: calc(76% - 58px);
+  }
+}
+
+@keyframes traffic-ferry-crossing-west {
+  0%, 20% {
+    right: 24%;
+  }
+
+  72%, 100% {
+    right: calc(76% - 58px);
+  }
+}
+
+@keyframes traffic-bridge-flow-east {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes traffic-bridge-flow-west {
+  to {
+    right: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .traffic-lab {
+    display: block;
+  }
+
+  .traffic-lab-heading {
+    padding-bottom: 42px;
+  }
+
+  .traffic-lab-heading h2 {
+    max-width: 720px;
+    font-size: clamp(82px, 12vw, 124px);
+  }
+
+  .traffic-console {
+    width: min(100%, 820px);
+  }
 }
 
 body:has(.messina-experience) .site-header {
@@ -403,5 +960,76 @@ body:has(.messina-experience) .header-mark {
 
   .chapter-2 {
     justify-content: flex-start;
+  }
+
+  .traffic-lab {
+    display: block;
+    padding: 94px 14px 64px;
+  }
+
+  .traffic-lab-heading {
+    padding: 0 8px 36px;
+  }
+
+  .traffic-lab-heading h2 {
+    font-size: clamp(76px, 23vw, 112px);
+  }
+
+  .traffic-lab-heading > span {
+    font-size: 20px;
+  }
+
+  .traffic-map {
+    height: 250px;
+  }
+
+  .traffic-console-top {
+    padding: 14px;
+  }
+
+  .traffic-mode-switch {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .traffic-mode-switch button {
+    padding: 9px 7px;
+    font-size: 8px;
+  }
+
+  .traffic-mode-switch button span {
+    margin-right: 4px;
+    font-size: 7px;
+  }
+
+  .traffic-map-note {
+    right: 12px;
+    bottom: 11px;
+  }
+
+  .traffic-controls {
+    display: block;
+    padding: 12px;
+  }
+
+  .traffic-controls > div {
+    margin-top: 8px;
+  }
+
+  .traffic-controls button {
+    flex: 1;
+  }
+
+  .traffic-metrics > div {
+    padding: 13px 10px;
+  }
+
+  .traffic-metrics span {
+    min-height: 24px;
+    font-size: 6px;
+  }
+
+  .traffic-metrics strong {
+    font-size: 24px;
   }
 }
