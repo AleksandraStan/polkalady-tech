@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -8,20 +9,27 @@ import {
 } from "framer-motion";
 
 interface SmoothScrollHeroProps {
+  children?: ReactNode;
   scrollHeight?: number;
   desktopImage?: string;
+  holdScrollHeight?: number;
   mobileImage?: string;
   initialClipPercentage?: number;
   finalClipPercentage?: number;
 }
 
+type SmoothScrollHeroBackgroundProps = Required<Omit<SmoothScrollHeroProps, "children" | "holdScrollHeight">> & {
+  children?: ReactNode;
+};
+
 const SmoothScrollHeroBackground = ({
+  children,
   scrollHeight,
   desktopImage,
   mobileImage,
   initialClipPercentage,
   finalClipPercentage,
-}: Required<SmoothScrollHeroProps>) => {
+}: SmoothScrollHeroBackgroundProps) => {
   const { scrollY } = useScroll();
 
   const clipStart = useTransform(
@@ -42,37 +50,43 @@ const SmoothScrollHeroBackground = ({
   );
 
   return (
-    <motion.div className="hero-sticky" style={{ clipPath }}>
-      <motion.div
-        className="hero-image hero-image-mobile"
-        style={{
-          backgroundImage: `url(${mobileImage})`,
-          backgroundSize,
-        }}
-      />
-      <motion.div
-        className="hero-image hero-image-desktop"
-        style={{
-          backgroundImage: `url(${desktopImage})`,
-          backgroundSize,
-        }}
-      />
-    </motion.div>
+    <div className="hero-sticky">
+      <motion.div className="hero-reveal" style={{ clipPath }}>
+        <motion.div
+          className="hero-image hero-image-mobile"
+          style={{
+            backgroundImage: `url(${mobileImage})`,
+            backgroundSize,
+          }}
+        />
+        <motion.div
+          className="hero-image hero-image-desktop"
+          style={{
+            backgroundImage: `url(${desktopImage})`,
+            backgroundSize,
+          }}
+        />
+      </motion.div>
+      {children}
+    </div>
   );
 };
 
 const SmoothScrollHero = ({
+  children,
   scrollHeight = 1500,
   desktopImage = "/website.png",
+  holdScrollHeight = 650,
   mobileImage = "/website.png",
   initialClipPercentage = 25,
   finalClipPercentage = 75,
 }: SmoothScrollHeroProps) => (
   <div
     className="scroll-hero"
-    style={{ height: `calc(${scrollHeight}px + 100vh)` }}
+    style={{ height: `calc(${scrollHeight + holdScrollHeight}px + 100vh)` }}
   >
     <SmoothScrollHeroBackground
+      children={children}
       scrollHeight={scrollHeight}
       desktopImage={desktopImage}
       mobileImage={mobileImage}

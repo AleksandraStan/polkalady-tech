@@ -5,6 +5,7 @@ import BlogPage from "./components/blog-page";
 import CompassPage from "./components/compass-page";
 import JourneysPage from "./components/journeys-page";
 import PortfolioPage from "./components/portfolio-page";
+import SiteFooter from "./components/site-footer";
 import SmoothScrollHero from "./components/ui/smooth-scroll-hero";
 import SiteMenu from "./components/ui/site-menu";
 import { initializeAnalytics, trackPageView } from "./lib/analytics";
@@ -37,22 +38,23 @@ function App() {
         {route.page === "home" && (
           <>
             <section className="hero-section">
-              <div className="hero-copy">
-                <p className="hero-kicker">Digital Horizons</p>
-                <h1>Building ideas beyond the ordinary.</h1>
-                <p className="hero-description">
-                  Scroll to explore a world shaped by technology, curiosity, and
-                  imagination.
-                </p>
-              </div>
-
               <SmoothScrollHero
                 scrollHeight={1500}
                 desktopImage={heroImage}
+                holdScrollHeight={800}
                 mobileImage={heroImage}
                 initialClipPercentage={25}
                 finalClipPercentage={75}
-              />
+              >
+                <div className="hero-copy">
+                  <p className="hero-kicker">Digital Horizons</p>
+                  <h1>Building ideas beyond the ordinary.</h1>
+                  <p className="hero-description">
+                    Scroll to explore a world shaped by technology, curiosity, and
+                    imagination.
+                  </p>
+                </div>
+              </SmoothScrollHero>
 
               <div className="scroll-cue" aria-hidden="true">
                 <span>Scroll to reveal</span>
@@ -77,6 +79,7 @@ function App() {
 
         {route.page === "about" && <AboutPage />}
       </main>
+      <SiteFooter />
       <AnalyticsConsent />
     </>
   );
