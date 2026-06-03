@@ -1,4 +1,4 @@
-export type PageName = "home" | "about" | "blog" | "portfolio" | "journeys";
+export type PageName = "home" | "about" | "blog" | "portfolio" | "journeys" | "compass";
 
 export interface SiteRoute {
   articleSlug?: string;
@@ -10,6 +10,7 @@ const projectPaths: Record<string, string> = {
   "beyond-ordinary": "traversee-messina",
   "connected-cities": "connected-cities",
   "digital-travelling": "digital-travelling",
+  "time-geography-compass": "time-geography-compass",
 };
 
 const projectSlugs = Object.fromEntries(
@@ -19,6 +20,7 @@ const projectSlugs = Object.fromEntries(
 export const pagePaths: Record<PageName, string> = {
   about: "/about/",
   blog: "/blog/",
+  compass: "/portfolio/time-geography-compass/",
   home: "/",
   journeys: "/journeys/",
   portfolio: "/portfolio/",
@@ -43,7 +45,7 @@ function routeFromLegacyHash(hash: string): SiteRoute | null {
     return { page: "portfolio", projectSlug: value.replace("project/", "") };
   }
 
-  if (value === "about" || value === "blog" || value === "journeys" || value === "portfolio") {
+  if (value === "about" || value === "blog" || value === "compass" || value === "journeys" || value === "portfolio") {
     return { page: value };
   }
 
@@ -67,6 +69,7 @@ export function routeFromLocation(): SiteRoute {
   const parts = window.location.pathname.split("/").filter(Boolean);
 
   if (parts[0] === "about") return { page: "about" };
+  if (parts[0] === "compass") return { page: "compass" };
   if (parts[0] === "journeys") return { page: "journeys" };
   if (parts[0] === "blog") {
     return { articleSlug: parts[1], page: "blog" };

@@ -593,9 +593,18 @@ h2 {
   object-fit: cover;
 }
 
+.project-art-compass {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(240, 184, 92, 0.34), transparent 14%),
+    repeating-conic-gradient(from 0deg, rgba(240, 184, 92, 0.42) 0deg 1deg, transparent 1deg 12deg),
+    radial-gradient(circle at 50% 50%, transparent 34%, rgba(139, 222, 210, 0.18) 35%, transparent 37%),
+    linear-gradient(135deg, rgba(8, 16, 34, 0.9), rgba(16, 44, 51, 0.86));
+}
+
 .project-art-1 { background-position: left center; }
 .project-art-2 { background-position: center; }
 .project-art-3 { background-position: right center; }
+.project-art-4 { background-position: center; }
 
 .project-preview > span {
   display: block;

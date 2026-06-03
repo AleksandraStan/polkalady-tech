@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AboutPage from "./components/about-page";
 import AnalyticsConsent from "./components/analytics-consent";
 import BlogPage from "./components/blog-page";
+import CompassPage from "./components/compass-page";
 import JourneysPage from "./components/journeys-page";
 import PortfolioPage from "./components/portfolio-page";
 import SmoothScrollHero from "./components/ui/smooth-scroll-hero";
@@ -69,6 +70,8 @@ function App() {
         {route.page === "blog" && <BlogPage articleSlug={route.articleSlug} />}
 
         {route.page === "portfolio" && <PortfolioPage projectSlug={route.projectSlug} />}
+
+        {route.page === "compass" && <CompassPage />}
 
         {route.page === "journeys" && <JourneysPage />}
 
