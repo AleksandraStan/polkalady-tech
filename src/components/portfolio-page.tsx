@@ -56,7 +56,7 @@ export default function PortfolioPage({ projectSlug }: { projectSlug?: string })
         <strong>Work in progress</strong>
         <span>
           Some of the content is currently being corrected. In the meantime,
-          you can open the Traversée Experience to watch the Messina project
+          you can open the Connected Cities Compass or Traversée Experience to watch the Messina project
           trailer.
         </span>
       </aside>
