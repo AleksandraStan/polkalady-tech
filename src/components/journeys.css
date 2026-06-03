@@ -4,7 +4,7 @@
   background:
     radial-gradient(circle at 14% 12%, rgba(94, 170, 92, 0.24), transparent 33%),
     radial-gradient(circle at 84% 20%, rgba(36, 112, 76, 0.3), transparent 31%),
-    linear-gradient(145deg, #071b16 0%, #0b251d 48%, #06140f 100%);
+    linear-gradient(145deg, #10382e 0%, #164638 48%, #0e3024 100%);
 }
 
 .journeys-heading {
@@ -43,7 +43,7 @@ body:has(.journeys-page) .side-menu h2 span {
   overflow: hidden;
   border: 1px solid rgba(161, 211, 139, 0.28);
   border-radius: 22px;
-  background: rgba(4, 24, 16, 0.88);
+  background: rgba(12, 45, 32, 0.88);
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
 }
 
@@ -56,7 +56,7 @@ body:has(.journeys-page) .side-menu h2 span {
   border-right: 1px solid rgba(218, 238, 207, 0.18);
   padding: 0;
   opacity: 0;
-  background-color: #071b14;
+  background-color: #103329;
   background-position: center;
   background-size: cover;
   cursor: pointer;

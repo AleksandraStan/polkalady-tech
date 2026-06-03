@@ -8,7 +8,7 @@
     linear-gradient(90deg, rgba(92, 225, 255, 0.035) 1px, transparent 1px),
     radial-gradient(circle at 80% 9%, rgba(16, 131, 192, 0.22), transparent 27%),
     radial-gradient(circle at 14% 70%, rgba(113, 19, 180, 0.2), transparent 30%),
-    #020316;
+    #0b1d42;
   background-size: 54px 54px, 54px 54px, auto, auto, auto;
 }
 
@@ -141,7 +141,7 @@
 .about-interest-grid article {
   min-height: 235px;
   padding: 24px;
-  background: rgba(4, 6, 31, 0.94);
+  background: rgba(14, 29, 70, 0.94);
   transition: background 200ms ease, transform 200ms ease;
 }
 

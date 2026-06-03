@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { navigateTo, pagePaths, type PageName } from "../../lib/navigation";
 
 interface SiteMenuProps {
@@ -30,9 +31,20 @@ const menuItems: { href: string; icon: keyof typeof icons; label: string; page: 
 
 export default function SiteMenu({ activePage }: SiteMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBrandVisible, setIsBrandVisible] = useState(true);
   const dragX = useMotionValue(0);
   const dragOpacity = useTransform(dragX, [-200, 0], [0, 1]);
   const logo = activePage === "journeys" ? "polkalady-logo-green.svg" : "polkalady-logo.svg";
+
+  useEffect(() => {
+    const updateBrandVisibility = () => {
+      setIsBrandVisible(window.scrollY < 140);
+    };
+
+    updateBrandVisibility();
+    window.addEventListener("scroll", updateBrandVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateBrandVisibility);
+  }, [activePage]);
 
   const navigate = (page: PageName) => {
     navigateTo(pagePaths[page]);
@@ -53,15 +65,19 @@ export default function SiteMenu({ activePage }: SiteMenuProps) {
           <span />
           <span />
         </motion.button>
-        <a className="brand" href={pagePaths.home} onClick={(event) => {
+        <span className="header-mark">PL / 01</span>
+      </header>
+
+      {createPortal(
+        <a className={`brand ${isBrandVisible ? "" : "brand-hidden"}`} href={pagePaths.home} onClick={(event) => {
           event.preventDefault();
           navigate("home");
         }}>
           <img src={`${import.meta.env.BASE_URL}${logo}`} alt="" />
           <strong><span>Polka</span>Lady</strong>
-        </a>
-        <span className="header-mark">PL / 01</span>
-      </header>
+        </a>,
+        document.body,
+      )}
 
       <AnimatePresence>
         {isOpen && (
