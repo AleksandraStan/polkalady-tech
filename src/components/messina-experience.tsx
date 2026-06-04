@@ -312,10 +312,12 @@ function TrafficSimulation() {
 
         <div className={`traffic-map traffic-map-${mode}`}>
           <div className="traffic-coast traffic-coast-sicily">
-            <span>Sicily</span>
+            <span><b>Messina</b><small>Sicily</small></span>
+            <i aria-hidden="true" />
           </div>
           <div className="traffic-coast traffic-coast-calabria">
-            <span>Calabria</span>
+            <span><b>Villa San Giovanni</b><small>Calabria</small></span>
+            <i aria-hidden="true" />
           </div>
           <div className="traffic-water">
             <b>Strait of Messina</b>
@@ -340,10 +342,12 @@ function TrafficSimulation() {
                 <div className="traffic-terminal traffic-terminal-calabria">Terminal</div>
                 <div className="traffic-ferry traffic-ferry-east">
                   <i />
+                  <span />
                   <b>Ferry</b>
                 </div>
                 <div className="traffic-ferry traffic-ferry-west">
                   <i />
+                  <span />
                   <b>Ferry</b>
                 </div>
               </>

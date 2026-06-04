@@ -526,19 +526,34 @@
 
 .traffic-coast-sicily {
   left: 0;
-  border-right: 1px solid rgba(206, 225, 215, 0.24);
+  border-right: 1px solid rgba(206, 225, 215, 0.32);
 }
 
 .traffic-coast-calabria {
   right: 0;
-  border-left: 1px solid rgba(206, 225, 215, 0.24);
+  border-left: 1px solid rgba(206, 225, 215, 0.32);
 }
 
 .traffic-coast span {
   position: absolute;
   top: 18px;
+  display: grid;
+  gap: 3px;
   color: rgba(242, 238, 229, 0.56);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.traffic-coast span b {
+  color: rgba(242, 238, 229, 0.78);
   font-size: 8px;
+  font-weight: 500;
+}
+
+.traffic-coast span small {
+  color: rgba(242, 238, 229, 0.38);
+  font-size: 6px;
 }
 
 .traffic-coast-sicily span {
@@ -547,6 +562,11 @@
 
 .traffic-coast-calabria span {
   right: 18px;
+  text-align: right;
+}
+
+.traffic-coast > i {
+  display: none;
 }
 
 .traffic-water {
@@ -689,21 +709,58 @@
 .traffic-ferry {
   position: absolute;
   display: grid;
-  width: 58px;
-  height: 22px;
-  place-items: center;
-  border: 1px solid rgba(242, 238, 229, 0.7);
-  background: rgba(24, 70, 76, 0.96);
+  width: 68px;
+  height: 30px;
+  place-items: end center;
+  background: transparent;
+  filter: drop-shadow(0 4px 6px rgba(3, 22, 25, 0.5));
 }
 
 .traffic-ferry i {
   position: absolute;
-  width: 15px;
-  border-top: 1px solid rgba(202, 237, 229, 0.5);
+  z-index: -1;
+  top: 18px;
+  width: 24px;
+  border-top: 1px solid rgba(202, 237, 229, 0.58);
+}
+
+.traffic-ferry::before {
+  position: absolute;
+  right: 4px;
+  bottom: 7px;
+  left: 4px;
+  height: 12px;
+  background: #d9ded1;
+  clip-path: polygon(0 10%, 82% 10%, 100% 52%, 91% 100%, 14% 100%);
+  content: "";
+}
+
+.traffic-ferry::after {
+  position: absolute;
+  bottom: 18px;
+  left: 19px;
+  width: 31px;
+  height: 9px;
+  border: 1px solid rgba(242, 238, 229, 0.72);
+  border-bottom: 0;
+  background:
+    linear-gradient(90deg, transparent 0 18%, rgba(17, 62, 68, 0.9) 18% 32%, transparent 32% 47%, rgba(17, 62, 68, 0.9) 47% 61%, transparent 61%),
+    rgba(118, 153, 150, 0.92);
+  clip-path: polygon(8% 0, 90% 0, 100% 100%, 0 100%);
+  content: "";
+}
+
+.traffic-ferry span {
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 13px;
+  width: 37px;
+  border-top: 1px solid rgba(17, 62, 68, 0.62);
 }
 
 .traffic-ferry-east {
-  top: 1px;
+  top: -3px;
   left: 24%;
   animation: traffic-ferry-crossing-east 17.6s ease-in-out infinite;
 }
@@ -714,8 +771,9 @@
 
 .traffic-ferry-west {
   right: 24%;
-  bottom: 1px;
+  bottom: -3px;
   animation: traffic-ferry-crossing-west 17.6s ease-in-out infinite;
+  transform: scaleX(-1);
 }
 
 .traffic-ferry-west i {
@@ -723,8 +781,19 @@
 }
 
 .traffic-ferry b {
+  position: absolute;
+  top: -8px;
+  left: 50%;
   color: var(--foam);
-  font-size: 7px;
+  font-size: 6px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  translate: -50% 0;
+  text-transform: uppercase;
+}
+
+.traffic-ferry-west b {
+  transform: scaleX(-1);
 }
 
 .traffic-vehicle {
@@ -934,7 +1003,7 @@
   }
 
   72%, 100% {
-    left: calc(76% - 58px);
+    left: calc(76% - 68px);
   }
 }
 
@@ -944,7 +1013,7 @@
   }
 
   72%, 100% {
-    right: calc(76% - 58px);
+    right: calc(76% - 68px);
   }
 }
 

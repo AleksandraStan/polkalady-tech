@@ -26,6 +26,31 @@ body:has(.journeys-page) .side-menu h2 span {
   color: #a7df77;
 }
 
+body:has(.journeys-page) .site-footer {
+  border-top-color: rgba(166, 220, 135, 0.2);
+  background:
+    linear-gradient(rgba(166, 220, 135, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 220, 135, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 82% 0%, rgba(116, 194, 121, 0.18), transparent 30%),
+    radial-gradient(circle at 12% 80%, rgba(91, 163, 106, 0.16), transparent 34%),
+    #10382e;
+  background-size: 48px 48px, 48px 48px, auto, auto, auto;
+}
+
+body:has(.journeys-page) .site-footer .section-label {
+  color: #a7df77;
+}
+
+body:has(.journeys-page) .footer-links a {
+  border-color: rgba(166, 220, 135, 0.52);
+  background: linear-gradient(135deg, rgba(125, 188, 99, 0.2), rgba(48, 132, 91, 0.28));
+  box-shadow: 0 16px 42px rgba(80, 166, 103, 0.14);
+}
+
+body:has(.journeys-page) .footer-links a:hover {
+  border-color: rgba(190, 235, 166, 0.76);
+}
+
 .journeys-heading > p:last-child {
   max-width: 600px;
   margin: 18px auto 0;

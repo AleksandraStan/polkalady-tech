@@ -35,12 +35,33 @@
   color: #f0b85c;
 }
 
-.compass-copy > p:last-child {
+.compass-copy > p:not(.section-label) {
   max-width: 520px;
   margin: 25px 0 0;
   color: rgba(241, 246, 244, 0.68);
   font-size: 16px;
   line-height: 1.8;
+}
+
+.compass-central-note {
+  display: grid;
+  max-width: 540px;
+  gap: 7px;
+  margin-top: 24px;
+  border-left: 2px solid rgba(240, 184, 92, 0.72);
+  padding: 4px 0 4px 15px;
+}
+
+.compass-central-note strong {
+  color: #f8d99a;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+}
+
+.compass-central-note span {
+  color: rgba(241, 246, 244, 0.62);
+  font-size: 12px;
+  line-height: 1.65;
 }
 
 .compass-workbench {
@@ -51,7 +72,7 @@
 .compass-instrument {
   position: relative;
   display: grid;
-  width: min(620px, 100%);
+  width: min(700px, 100%);
   aspect-ratio: 1;
   place-items: center;
   overflow: hidden;
@@ -104,7 +125,7 @@
   position: absolute;
   bottom: 50%;
   left: 50%;
-  width: 30px;
+  width: 42px;
   height: var(--ray-length);
   border: 0;
   border-radius: 999px;
@@ -112,7 +133,7 @@
   background: transparent;
   cursor: pointer;
   color: inherit;
-  box-shadow: 0 0 16px rgba(139, 222, 210, 0.16);
+  box-shadow: 0 0 16px var(--ray-glow);
   transform: translateX(-50%) rotate(var(--ray-bearing));
   transform-origin: 50% 100%;
   transition: width 180ms ease;
@@ -123,32 +144,35 @@
   inset: 0 auto 0 50%;
   width: 2px;
   border-radius: 999px;
-  background: linear-gradient(0deg, rgba(139, 222, 210, 0.14), rgba(139, 222, 210, 0.62));
-  box-shadow: 0 0 16px rgba(139, 222, 210, 0.16);
+  background: linear-gradient(0deg, transparent, var(--ray-color));
+  box-shadow: 0 0 10px var(--ray-glow);
   content: "";
+  opacity: 0.58;
   translate: -50% 0;
-  transition: background 180ms ease, box-shadow 180ms ease, width 180ms ease;
+  transition: box-shadow 180ms ease, opacity 180ms ease, width 180ms ease;
 }
 
 .compass-ray.active::before,
 .compass-ray:hover::before,
 .compass-ray:focus-visible::before {
   width: 4px;
-  background: linear-gradient(0deg, rgba(240, 184, 92, 0.2), rgba(233, 75, 95, 0.88));
-  box-shadow: 0 0 24px rgba(233, 75, 95, 0.32);
+  background: linear-gradient(0deg, transparent, var(--ray-color));
+  box-shadow: 0 0 28px var(--ray-glow);
+  opacity: 1;
 }
 
 .compass-ray span {
   position: absolute;
-  top: -30px;
+  top: 10px;
   left: 50%;
-  min-width: 124px;
+  width: max-content;
+  max-width: 108px;
   border: 1px solid rgba(240, 184, 92, 0.44);
   border-radius: 8px;
   padding: 6px 8px;
   background: rgba(7, 17, 34, 0.9);
   color: #fff5dc;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.25;
@@ -162,22 +186,30 @@
 
 .compass-ray small {
   position: absolute;
-  top: 12px;
+  top: 42px;
   left: 50%;
   color: rgba(139, 222, 210, 0.72);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  opacity: 0.7;
+  opacity: 0;
   pointer-events: none;
   text-transform: uppercase;
   transform: translateX(-50%) rotate(var(--ray-counter-bearing));
+  transition: opacity 160ms ease;
 }
 
+.compass-ray.active span,
 .compass-ray:hover span,
 .compass-ray:focus-visible span {
   opacity: 1;
   transform: translateX(-50%) rotate(var(--ray-counter-bearing)) translateY(0);
+}
+
+.compass-ray.active small,
+.compass-ray:hover small,
+.compass-ray:focus-visible small {
+  opacity: 0.8;
 }
 
 .compass-mark {
@@ -262,13 +294,14 @@
   color: rgba(255, 245, 220, 0.82);
 }
 
-.journey-icon {
+.compass-panel .journey-icon {
   width: 12px;
   height: 12px;
+  flex: 0 0 12px;
   stroke: #8bded2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2;
+  stroke-width: 2.4;
 }
 
 .compass-meta {
