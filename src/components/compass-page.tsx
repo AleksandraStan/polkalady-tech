@@ -310,9 +310,7 @@ export default function CompassPage() {
               <CompassMark bearing={0} label="N" />
               <CompassMark bearing={45} label="NE" />
               <CompassMark bearing={90} label="E" />
-              <CompassMark bearing={135} label="SE" />
               <CompassMark bearing={180} label="S" />
-              <CompassMark bearing={225} label="SW" />
               <CompassMark bearing={270} label="W" />
               <CompassMark bearing={315} label="NW" />
             </div>
