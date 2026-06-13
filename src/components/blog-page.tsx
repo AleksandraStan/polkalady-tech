@@ -5,6 +5,7 @@ import "./blog.css";
 
 export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
   const activeArticle = articles.find((article) => article.slug === articleSlug);
+  const featuredArticle = articles.find((article) => article.slug === "does-space-precede-movement");
 
   if (activeArticle) {
     return (
@@ -48,6 +49,24 @@ export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
           edited and refined.
         </span>
       </aside>
+      {featuredArticle && (
+        <a
+          className="blog-feature"
+          href={articlePath(featuredArticle.slug)}
+          onClick={(event) => {
+            event.preventDefault();
+            navigateTo(articlePath(featuredArticle.slug));
+          }}
+        >
+          <span>Featured research note</span>
+          <h2>{featuredArticle.title}</h2>
+          <p>
+            Hagerstrand, individual space-time flows, and how movement makes
+            space readable like an experience.
+          </p>
+          <b>Open article &rarr;</b>
+        </a>
+      )}
       <div className="article-list">
         {articles.map((article) => (
           <a
