@@ -27,6 +27,12 @@ export const articles: BlogArticle[] = [
     readTime: "5 min",
     published: "June 2026",
     intro: "A research note on Hagerstrand's time-geography, individual space-time flows, and the question of whether movement simply crosses space or actively produces it.",
+    media: [{
+      type: "image",
+      src: "blog/szescian_hagerstranda_pauza.gif",
+      alt: "Animated Hagerstrand cube showing a traveller trajectory through space and time",
+      caption: "Hagerstrand's cube: a moving trajectory with pauses, points, and time as a vertical dimension.",
+    }],
     sections: [
       {
         heading: "A question for movement",
@@ -43,10 +49,10 @@ export const articles: BlogArticle[] = [
         ],
       },
       {
-        heading: "Taylor & Francis source",
+        heading: "Reference online",
         paragraphs: [
-          "Published source available through Taylor & Francis: An artistic perspective on individual space-time flows, Aleksandra Stanczak and Antoni B. Moore, International Journal of Cartography, volume 10, issue 2, pages 229-246. Published online 15 January 2024. DOI: 10.1080/23729333.2023.2282280.",
-          "The public Taylor & Francis metadata identifies the article, authors, journal, pages, DOI, and publication history. The interpretive text here is written for PolkaLady as a short companion note, not as a reproduction of the paywalled article.",
+          "DOI link: https://www.tandfonline.com/doi/abs/10.1080/23729333.2023.2282280",
+          "Published with Antoni Moore, University of Otago, Dunedin NZ.",
           "Working fragment for the website: movement is not only an event occurring inside space; it is one of the methods through which space becomes readable, relational, and emotionally charged.",
         ],
       },
