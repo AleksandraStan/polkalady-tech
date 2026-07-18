@@ -35,12 +35,12 @@ export const articles: BlogArticle[] = [
     category: "AI & Mobility",
     readTime: "7 min",
     published: "July 2026",
-    intro: "A reflection on GLOBALTRACE, location privacy, and what anonymous GPS data may mean when general-purpose language models can reconstruct missing trajectories.",
+    intro: "Some concerns about location privacy",
     media: [{
       type: "image",
       src: "blog/llm-gps-detective.png",
       alt: "Abstract violet detective scene with a magnifying glass over glowing GPS trajectories",
-      caption: "A detective-like reading of anonymous GPS fragments: clues, trajectories, and the question of what an LLM can reconstruct.",
+      caption: "",
     }],
     sections: [
       {
