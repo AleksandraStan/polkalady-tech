@@ -5,11 +5,10 @@ import "./blog.css";
 
 export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
   const activeArticle = articles.find((article) => article.slug === articleSlug);
-  const featuredArticle = articles.find((article) => article.slug === "does-space-precede-movement");
 
   if (activeArticle) {
     return (
-      <article className="content-page article-page">
+      <article className={`content-page article-page ${activeArticle.articleClassName ?? ""}`}>
         <button className="back-link" onClick={() => navigateTo(pagePaths.blog)}>
           &larr; Back to journal
         </button>
@@ -17,13 +16,14 @@ export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
           {activeArticle.category} / {activeArticle.readTime} read
         </p>
         <h1>{activeArticle.title}</h1>
+        {activeArticle.subtitle && <p className="article-subtitle">{activeArticle.subtitle}</p>}
         <p className="article-date">{activeArticle.published}</p>
-        <p className="article-intro">{activeArticle.intro}</p>
+        {!activeArticle.hideIntro && <p className="article-intro">{activeArticle.intro}</p>}
         <MediaGallery media={activeArticle.media} />
         <div className="article-body">
           {activeArticle.sections.map((section) => (
             <section key={section.heading}>
-              <h2>{section.heading}</h2>
+              {!activeArticle.hideSectionHeadings && <h2>{section.heading}</h2>}
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -49,24 +49,6 @@ export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
           edited and refined.
         </span>
       </aside>
-      {featuredArticle && (
-        <a
-          className="blog-feature"
-          href={articlePath(featuredArticle.slug)}
-          onClick={(event) => {
-            event.preventDefault();
-            navigateTo(articlePath(featuredArticle.slug));
-          }}
-        >
-          <span>Featured research note</span>
-          <h2>{featuredArticle.title}</h2>
-          <p>
-            Hagerstrand, individual space-time flows, and how movement makes
-            space readable like an experience.
-          </p>
-          <b>Open article &rarr;</b>
-        </a>
-      )}
       <div className="article-list">
         {articles.map((article) => (
           <a
@@ -81,7 +63,10 @@ export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
             <span>{article.number}</span>
             <div>
               <p>{article.category} / {article.readTime} read</p>
-              <h2>{article.title}</h2>
+              <h2>
+                {article.title}
+                {article.statusLabel && <span>{article.statusLabel}</span>}
+              </h2>
             </div>
             <b>&rarr;</b>
           </a>
