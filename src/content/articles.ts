@@ -58,6 +58,8 @@ export const articles: BlogArticle[] = [
         "The very recent GLOBALTRACE results are based on a general-purpose LLM, without task-specific training, that was able to outperform several specialized trajectory recovery models.",
         "If an LLM can reconstruct where you have been from only fragments of your GPS history, it can potentially infer too much information from our anonymous data.",
         "I think there is an ethical risk behind it. We may need to start evaluating AI not only for accuracy or geographical bias, but also for how much sensitive information it can reconstruct from location data. The real concern is how much it can reveal and uncover to anyone.",
+
+        "Short bibliography:"
         "Truong, T. et al. (2025). Understanding the Geospatial Reasoning Capabilities of Large Language Models (GLOBALTRACE). arXiv.",
         "Shao, Z. et al. (2024). TrajFM: A Foundation Model for Urban Trajectory Analytics. arXiv.",
         "Sun, Y. et al. (2023). TrajBERT: Trajectory BERT for Urban Mobility Representation Learning.",
