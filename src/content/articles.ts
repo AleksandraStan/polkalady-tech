@@ -30,7 +30,7 @@ export const articles: BlogArticle[] = [
     articleClassName: "article-page-gps",
     hideIntro: true,
     hideSectionHeadings: true,
-    subtitle: "A detective story made of coordinates",
+    subtitle: "AI as a detective?",
     title: "How much can an LLM read from one's GPS history?",
     category: "AI & Mobility",
     readTime: "7 min",
