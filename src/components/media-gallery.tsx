@@ -24,7 +24,19 @@ export default function MediaGallery({ media = [] }: MediaGalleryProps) {
           ) : (
             <img src={mediaUrl(item.src)} alt={item.alt ?? ""} />
           )}
-          {item.caption && <figcaption>{item.caption}</figcaption>}
+          {(item.caption || item.sourceUrl) && (
+            <figcaption>
+              {item.caption}
+              {item.sourceUrl && (
+                <>
+                  {" "}
+                  <a href={item.sourceUrl} rel="noreferrer" target="_blank">
+                    {item.sourceLabel ?? "Source"}
+                  </a>
+                </>
+              )}
+            </figcaption>
+          )}
         </figure>
       ))}
     </div>

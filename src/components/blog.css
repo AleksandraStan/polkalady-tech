@@ -138,6 +138,16 @@
   line-height: 1.6;
 }
 
+.media-gallery figcaption a {
+  color: #5ce1ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.media-gallery figcaption a:hover {
+  text-decoration: underline;
+}
+
 .article-body section {
   padding: 26px 0;
 }
@@ -205,4 +215,73 @@
 
 .article-page-gps .article-body p {
   color: rgba(246, 235, 255, 0.74);
+}
+
+.article-page-archaeology {
+  background:
+    linear-gradient(rgba(92, 225, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 217, 154, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 76% 18%, rgba(92, 225, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 8% 62%, rgba(207, 53, 255, 0.14), transparent 34%),
+    #0b1f2e;
+  background-size: 56px 56px, 56px 56px, auto, auto, auto;
+}
+
+.article-page-archaeology h1 {
+  max-width: 1080px;
+}
+
+.article-page-archaeology .article-intro {
+  max-width: 860px;
+  color: rgba(237, 242, 255, 0.86);
+}
+
+.article-page-archaeology .media-gallery {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1040px;
+}
+
+.article-page-archaeology .media-gallery figure {
+  border-color: rgba(92, 225, 255, 0.24);
+  background: rgba(6, 22, 37, 0.78);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+}
+
+.article-page-archaeology .media-gallery img {
+  max-height: 500px;
+}
+
+.article-page-archaeology .article-body {
+  max-width: 920px;
+  border-top-color: rgba(248, 217, 154, 0.22);
+}
+
+.article-page-archaeology .article-body section {
+  padding-top: 8px;
+}
+
+.article-page-archaeology .article-body h2:first-child {
+  margin-top: 0;
+}
+
+.article-page-archaeology .article-body h2 {
+  margin: 34px 0 14px;
+  color: #f8d99a;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.05;
+}
+
+.article-page-archaeology .article-body h3 {
+  margin: 34px 0 12px;
+  color: #5ce1ff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.12;
+}
+
+.article-page-archaeology .article-body p {
+  max-width: 780px;
+  color: rgba(237, 242, 255, 0.74);
+  font-size: 17px;
+  line-height: 1.95;
 }

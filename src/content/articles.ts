@@ -21,6 +21,8 @@ export interface ArticleMedia {
   alt?: string;
   caption?: string;
   poster?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
 }
 
 export const articles: BlogArticle[] = [
@@ -111,6 +113,8 @@ export const articles: BlogArticle[] = [
 {
   number: "03",
   slug: "3d-reconstruction-digital-universe-archaeology",
+  articleClassName: "article-page-archaeology",
+  hideSectionHeadings: true,
   statusLabel: "not available yet",
   title: "3D reconstruction & digital universe in archaeology",
   category: "3D Design",
@@ -121,9 +125,11 @@ export const articles: BlogArticle[] = [
   media: [
     {
       type: "image",
-      src: "website.png",
-      alt: "A digital landscape beneath a connected globe",
-      caption: "Visual research & visitor experience.",
+      src: "blog/archaeology-reconstruction-source.gif",
+      alt: "Animated excerpt showing digital reconstruction material from the source video",
+      caption: "",
+      sourceLabel: "Source video",
+      sourceUrl: "https://www.youtube.com/watch?v=_TO5Ls296uQ&t=8s",
     },
   ],
   sections: [
@@ -136,7 +142,7 @@ When we think about archaeology, we immediately have an image of ruins, a piece 
 
 Why is this actually helping us? Because we can test our hypotheses and run entire simulations to see if all the details fit.
 
-### Example
+### Examples:
 
 In a recent study of the Parthenon, Juan de Lara (2025) explored how the ancient Greeks might have experienced the temple. Its orientation toward the rising sun, marble ceilings, windows, and reflective surfaces all influenced how light entered the space. Using 3D reconstruction and realistic lighting simulations, it was possible to recreate the temple's almost mysterious atmosphere, where the gold-and-ivory statue of Athena appeared dramatically from the darkness. Similarly, the 3D reconstruction of the House of Caecilius Iucundus in Pompeii allowed researchers to estimate the position and typology of the original architectural elements (www.pompejiprojektet.se/insula.php).
 
