@@ -108,29 +108,45 @@ export const articles: BlogArticle[] = [
       },
     ],
   },
-  {
-    number: "03",
-    slug: "3d-reconstruction-digital-universe-archaeology",
-    statusLabel: "not available yet",
-    title: "3D reconstruction & digital universe in archaeology",
-    category: "3D Design",
-    readTime: "6 min",
-    published: "May 2026",
-    intro: "Digital reconstruction is changing how we encounter the past: not as a static record, but as a world that can be explored.",
-    media: [{
+{
+  number: "03",
+  slug: "3d-reconstruction-digital-universe-archaeology",
+  statusLabel: "not available yet",
+  title: "3D reconstruction & digital universe in archaeology",
+  category: "3D Design",
+  readTime: "6 min",
+  published: "May 2026",
+  intro:
+    "Digital reconstruction is changing how we revisit the past, opening doors that were previously closed to the wider public.",
+  media: [
+    {
       type: "image",
       src: "website.png",
       alt: "A digital landscape beneath a connected globe",
-      caption: "Visual worlds can turn research into an experience.",
-    }],
-    sections: [{
+      caption: "Visual research & visitor experience.",
+    },
+  ],
+  sections: [
+    {
       heading: "From documentation to experience",
       paragraphs: [
-        "Three-dimensional models help researchers test spatial relationships, compare hypotheses, and communicate discoveries.",
-        "Used thoughtfully, immersive tools connect scientific accuracy with a richer public experience of cultural heritage.",
+        `## From Ruins to Immersive Worlds
+
+When we think about archaeology, we immediately have an image of ruins, a piece of stone, or a fragment of ceramic that once existed, which we try to interpret and place in its historical context. Each discovery might bring a new interpretation and a change in the established facts. Today’s technologies, such as 3D reconstruction and virtual reality, make these possible worlds even more visible, introducing us to an infinite number of simulations and scenarios that we can actually see.
+
+Why is this actually helping us? Because we can test our hypotheses and run entire simulations to see if all the details fit.
+
+### Example
+
+In a recent study of the Parthenon, Juan de Lara (2025) explored how the ancient Greeks might have experienced the temple. Its orientation toward the rising sun, marble ceilings, windows, and reflective surfaces all influenced how light entered the space. Using 3D reconstruction and realistic lighting simulations, it was possible to recreate the temple's almost mysterious atmosphere, where the gold-and-ivory statue of Athena appeared dramatically from the darkness. Similarly, the 3D reconstruction of the House of Caecilius Iucundus in Pompeii allowed researchers to estimate the position and typology of the original architectural elements (www.pompejiprojektet.se/insula.php).
+
+One of the most important techniques leading to the virtual reconstruction of monuments is photogrammetry. By combining hundreds of overlapping photographs, it produces highly accurate 3D models that become digital replicas of archaeological objects and sites. Moreover, the possibility of interacting with objects that visitors would normally never be allowed to touch is one of the most engaging aspects of virtual reality, especially when these virtual replicas are presented at the same scale as the original artefacts. In a study by Cassidy et al. (2019), a virtual reality reconstruction of Pleito Cave in California allowed participants to closely examine fragile rock art without physically visiting or disturbing the site. Some also described the experience of virtually picking up ancestral baskets as "mind-blowing" and admitted having "goose bumps" when holding them.
+
+Today, one of the main challenges of virtual reconstruction lies in the limited accessibility and technical complexity of platforms such as Unreal Engine and Unity. As these tools become more intuitive and widely available, they may open unprecedented doors to the past, allowing us to explore the history of our civilizations in ways that were once unimaginable.`,
       ],
-    }],
-  },
+    },
+  ],
+},
   {
     number: "04",
     slug: "can-llm-read-as-good-as-humans",
