@@ -91,7 +91,7 @@ export default function BlogPage({ articleSlug }: { articleSlug?: string }) {
               <p>{article.category} / {article.readTime} read</p>
               <h2>
                 {article.title}
-                {article.statusLabel && <span>{article.statusLabel}</span>}
+                {article.statusLabel && (article.statusLabel !== "not available yet" || article.slug === "can-llm-read-as-good-as-humans") && <span>{article.statusLabel}</span>}
               </h2>
             </div>
             <b>&rarr;</b>
