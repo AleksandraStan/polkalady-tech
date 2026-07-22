@@ -148,7 +148,17 @@ In a recent study of the Parthenon, Juan de Lara (2025) explored how the ancient
 
 One of the most important techniques leading to the virtual reconstruction of monuments is photogrammetry. By combining hundreds of overlapping photographs, it produces highly accurate 3D models that become digital replicas of archaeological objects and sites. Moreover, the possibility of interacting with objects that visitors would normally never be allowed to touch is one of the most engaging aspects of virtual reality, especially when these virtual replicas are presented at the same scale as the original artefacts. In a study by Cassidy et al. (2019), a virtual reality reconstruction of Pleito Cave in California allowed participants to closely examine fragile rock art without physically visiting or disturbing the site. Some also described the experience of virtually picking up ancestral baskets as "mind-blowing" and admitted having "goose bumps" when holding them.
 
-Today, one of the main challenges of virtual reconstruction lies in the limited accessibility and technical complexity of platforms such as Unreal Engine and Unity. As these tools become more intuitive and widely available, they may open unprecedented doors to the past, allowing us to explore the history of our civilizations in ways that were once unimaginable.`,
+Today, one of the main challenges of virtual reconstruction lies in the limited accessibility and technical complexity of platforms such as Unreal Engine and Unity. As these tools become more intuitive and widely available, they may open unprecedented doors to the past, allowing us to explore the history of our civilizations in ways that were once unimaginable.
+
+## Short bibliography
+
+Cassidy, B., Sim, G., Robinson, D. W., & Gandy, D. (2019). A Virtual Reality Platform for Analyzing Remote Archaeological Sites. Interacting with Computers, 31(2), 167-176. https://doi.org/10.1093/iwc/iwz011
+
+de Lara, J. (2025). Illuminating the Parthenon. Annual of the British School at Athens, 120, 321-366. https://doi.org/10.1017/S0068245424000145
+
+Dell'Unto, N., Ferdani, D., Leander Touati, A.-M., Dellepiane, M., Callieri, M., & Lindgren, S. (2013). Digital reconstruction and visualization in archaeology: Case-study drawn from the work of the Swedish Pompeii Project. In 2013 Digital Heritage International Congress (pp. 621-628). IEEE. https://doi.org/10.1109/DIGITALHERITAGE.2013.6743804
+
+The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. https://www.pompejiprojektet.se/insula-v-1/documentation-of-insula-v-1/archive-main-documentation/v-126-casa-di-caecilius-iucundus-south-house/`,
       ],
     },
   ],
