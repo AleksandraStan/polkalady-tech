@@ -524,11 +524,6 @@ h1 {
   border-color: rgba(92, 225, 255, 0.8);
 }
 
-.newsletter-signup button:disabled {
-  cursor: wait;
-  opacity: 0.66;
-}
-
 .newsletter-signup p {
   max-width: 430px;
   margin: 0;
