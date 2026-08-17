@@ -424,9 +424,9 @@ h1 {
 .footer-inner {
   display: grid;
   max-width: 1120px;
-  grid-template-columns: minmax(240px, 1fr) auto;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(280px, 1.1fr) auto;
   gap: clamp(20px, 5vw, 56px);
-  align-items: center;
+  align-items: start;
 }
 
 .footer-copy p:not(.section-label) {
@@ -461,6 +461,71 @@ h1 {
 .footer-links a:hover {
   border-color: rgba(92, 225, 255, 0.72);
   box-shadow: 0 16px 42px rgba(92, 225, 255, 0.14);
+}
+
+.newsletter-signup {
+  display: grid;
+  gap: 12px;
+}
+
+.newsletter-signup label {
+  color: #5ce1ff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.newsletter-signup div {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto;
+  gap: 10px;
+}
+
+.newsletter-signup input {
+  min-width: 0;
+  border: 1px solid rgba(92, 225, 255, 0.35);
+  border-radius: 8px;
+  padding: 13px 14px;
+  background: rgba(11, 29, 66, 0.5);
+  color: #ffffff;
+  font: inherit;
+  outline: none;
+}
+
+.newsletter-signup input::placeholder {
+  color: rgba(238, 239, 255, 0.46);
+}
+
+.newsletter-signup input:focus {
+  border-color: rgba(92, 225, 255, 0.75);
+  box-shadow: 0 0 0 3px rgba(92, 225, 255, 0.12);
+}
+
+.newsletter-signup button {
+  border: 1px solid rgba(92, 225, 255, 0.55);
+  border-radius: 8px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, rgba(92, 225, 255, 0.2), rgba(207, 53, 255, 0.24));
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.newsletter-signup button:hover {
+  border-color: rgba(92, 225, 255, 0.8);
+}
+
+.newsletter-signup p {
+  max-width: 430px;
+  margin: 0;
+  color: rgba(238, 239, 255, 0.64);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 h2 {
@@ -724,5 +789,13 @@ h2 {
 
   .footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .newsletter-signup div {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-signup button {
+    min-height: 46px;
   }
 }
