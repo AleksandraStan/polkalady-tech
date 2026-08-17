@@ -468,6 +468,10 @@ h1 {
   gap: 12px;
 }
 
+.newsletter-signup input[name="_honey"] {
+  display: none;
+}
+
 .newsletter-signup label {
   color: #5ce1ff;
   font-size: 10px;
@@ -518,6 +522,11 @@ h1 {
 
 .newsletter-signup button:hover {
   border-color: rgba(92, 225, 255, 0.8);
+}
+
+.newsletter-signup button:disabled {
+  cursor: wait;
+  opacity: 0.66;
 }
 
 .newsletter-signup p {
