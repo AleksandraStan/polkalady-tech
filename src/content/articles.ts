@@ -218,7 +218,7 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
         heading: "Why do some languages outperform English?",
         paragraphs: [
           "The final layer of complexity comes from tokenization. OneRuler evaluated long-context performance across 26 languages. Surprisingly, English was not the best-performing language in its long-context retrieval tasks. At context lengths of 64,000 and 128,000 tokens, Polish achieved the highest average performance across the evaluated models, while English ranked sixth (Kim et al., 2025).",
-          "LLMs do not process texts directly as words but as tokens, and expressing the same information in English and Polish may require different numbers of tokens. Because Polish is morphologically rich, some tokenizers might divide its words into more subwords units. Under a fixed token budget, a Polish NNeedle-in-a-Haystack task could therefore contain fewer words, and potentially fewer distractors, around the 'needle' than its English equivalent.",
+          "LLMs do not process texts directly as words but as tokens, and expressing the same information in English and Polish may require different numbers of tokens. Because Polish is morphologically rich, some tokenizers might divide its words into more subwords units. Under a fixed token budget, a Polish Needle-in-a-Haystack task could therefore have contained fewer words, and potentially fewer distractors, around the 'needle' than its English equivalent.",
           " This is, of course, my hypothesis rather than a conclusion established by the experiment. Token counts do not translate directly into an exact number of words, facts, or distractors, even thought they influence these quantities.",
         ],
       },
