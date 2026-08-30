@@ -195,7 +195,7 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
         heading: "What happens when the answer does not exist?",
         paragraphs: [
           "OneRuler introduced an additional task called None-NIAH. This variant tests a model’s ability to recognize when no correct answer exists. The context contains four embedded “needles,” but all of them function as distractors. The model must acknowledge that the requested answer is absent instead of selecting an incorrect one (Kim et al., 2025).",
-          "Because tasks such as None-NIAH inherently lack a valid answer, the researchers included the instruction: “If no such numbers exist, please answer ‘none’.”,
+          "Because tasks such as None-NIAH inherently lack a valid answer, the researchers included the instruction: “If no such numbers exist, please answer ‘none’.”",
           "The researchers also included the same option in Single-NIAH, where the correct answer was always present. This small change made the task substantially more difficult.  Several models answered “none” even when the requested information appeared in the text (Kim et al., 2025).",
           "An LLM may fail not only by inventing an answer that is absent, but also by concluding that no answer exists when it has simply failed to retrieve the information.",
         ],
