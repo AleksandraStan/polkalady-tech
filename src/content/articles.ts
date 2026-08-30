@@ -166,18 +166,92 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
   {
     number: "04",
     slug: "can-llm-read-as-good-as-humans",
-    statusLabel: "not available yet",
-    title: "Can LLM read as good as humans?",
+    title: "What Do We Mean When We Say That an LLM Can “Read”?",
     category: "AI & Research",
-    readTime: "4 min",
-    published: "May 2026",
-    intro: "Language models process enormous amounts of text, but reading is also context, interpretation, and judgment.",
-    sections: [{
-      heading: "A useful collaboration",
-      paragraphs: [
-        "Models can summarize, compare, and retrieve relationships across a huge range of material.",
-        "The strongest results appear when computational scale meets a reader who still asks careful questions.",
-      ],
-    }],
+    readTime: "10 min",
+    published: "August 2026",
+    intro: "Language models can retrieve, infer, and synthesize information—but is that the same as human reading?",
+    sections: [
+      {
+        heading: "Reading comprehension in humans and machines",
+        paragraphs: [
+          "Before asking whether a large language model can read a book in Polish, French, or English, we first need to define what reading means.",
+          "One way of defining what it means for an LLM to “read” is to compare it with how reading comprehension is tested in humans. While school examinations in a student’s mother tongue assume linguistic competence and test what the student can do with a text, foreign-language examinations test both understanding of the language and understanding of what the text communicates.",
+          "Reading comprehension is therefore assessed in at least two rather different contexts. Children and adolescents take reading-comprehension examinations in their mother tongue at school. Adults and students learning a foreign language encounter similar tasks when taking language certificates such as the Cambridge English examinations, DELF/DALF for French, DELE for Spanish, or Polish language certification examinations.",
+          "Evaluating LLMs is, to some extent, similar, although their capabilities are divided more systematically into different levels: retrieving information, retrieving information and making inferences from it, and synthesizing information across a text.",
+        ],
+      },
+      {
+        heading: "Three levels of machine “reading”",
+        paragraphs: [
+          "Using the kinds of tasks found in long-context benchmarks such as RULER, LongBench, and ∞Bench, we can illustrate these three levels as follows.",
+          "Retrieval — The model is given a very long text containing the statement “The key is 92841” and is later asked, “What is the key?” It only needs to locate and reproduce information already present in the context. This corresponds to Needle-in-a-Haystack or passkey-retrieval tasks.",
+          "Retrieval and inference — The relevant information is distributed across the context. For example: “Daniel gave the blue box to Maria.” “Maria gave it to Paul.” “Paul left it in the library.” When asked, “Where is the blue box?”, the model must retrieve several pieces of information and connect them to infer the answer: the library. RULER includes this kind of multi-hop tracing task, which goes beyond locating a single sentence (Hsieh et al., 2024).",
+          "Synthesis — The model is given a long document or an entire book and asked to summarize it. There is no single passage containing “the answer.” The model must retrieve information from different parts of the text, determine what is important, integrate it, and produce a new, compressed representation.",
+          "LongBench includes summarization alongside single-document and multi-document question answering, while ∞Bench extends long-context evaluation beyond 100,000 tokens and includes an English long-document summarization task (Bai et al., 2024; Zhang et al., 2024).",
+          "These three levels are related, but success at one level does not guarantee success at the others. A model that can retrieve an isolated number from a book-length context may still struggle to reconstruct an argument or produce a faithful summary of the same text.",
+        ],
+      },
+      {
+        heading: "What happens when the answer does not exist?",
+        paragraphs: [
+          "OneRuler introduced an additional task called None-NIAH. This variant tests a model’s ability to recognize when no correct answer exists. The context contains four embedded “needles,” but all of them function as distractors. The model must acknowledge that the requested answer is absent instead of selecting an incorrect one (Kim et al., 2025).",
+          "Because tasks such as None-NIAH inherently lack a valid answer, the researchers included the instruction: “If no such numbers exist, please answer ‘none’.” This option was included in the task instructions; it was not a special form of pre-training for the benchmark.",
+          "The researchers also included the same option in Single-NIAH, where the correct answer was always present. This small change made the task substantially more difficult. At a context length of 128,000 tokens in English, adding the possibility of answering “none” reduced Single-NIAH accuracy by 32 percentage points. Several models—and especially o3-mini-high—answered “none” even when the requested information appeared in the text (Kim et al., 2025).",
+          "This result reveals an important difficulty in defining machine reading. A model may fail not only by inventing an answer that is absent, but also by concluding that no answer exists when it has simply failed to retrieve the information.",
+        ],
+      },
+      {
+        heading: "Why performance changes with context length",
+        paragraphs: [
+          "One reason for poor performance is that models generally perform worse as context length increases. Earlier Transformer language models were often trained with relatively short context windows, commonly between 512 and 2,048 tokens. Improvements in hardware and algorithms later produced models with context windows of 4,096, 32,000, 100,000 tokens, and beyond. However, the ability to accept a long input does not necessarily mean that a model can use every part of it reliably (Liu et al., 2024).",
+          "RULER illustrates this distinction. Although all the models evaluated in the original study claimed context windows of at least 32,000 tokens, only around half maintained satisfactory performance at that length. Performance generally declined as context length and task complexity increased (Hsieh et al., 2024).",
+          "For example, models with extended context windows could process longer inputs, but they still struggled with tasks requiring information to be connected or synthesized across those inputs.",
+        ],
+      },
+      {
+        heading: "The “lost in the middle” effect",
+        paragraphs: [
+          "There is another characteristic of long-context performance that is particularly important. Changing the position of relevant information in the input can substantially affect model performance, even when the information itself remains exactly the same.",
+          "Researchers have observed a pattern that often resembles a U-shaped performance curve: beginning — better performance; middle — worse performance; end — better performance.",
+          "Information at the end may benefit from a recency effect. Material close to the question or instruction is especially accessible when the model generates its answer because the relevant tokens are close to the point of generation.",
+          "Information at the beginning may benefit from a primacy effect. Models can also give disproportionate attention to the start of a context. This does not mean that a model literally “remembers the beginning” in the way a human reader might. The effect is instead associated with properties of model architecture, attention, and training.",
+          "Information in the middle receives neither advantage. Relevant evidence buried among many other tokens has to compete with a large amount of surrounding material. The model can technically attend to it, but it does so less reliably.",
+          "In Lost in the Middle, Liu et al. (2024) demonstrated that performance was often highest when relevant information appeared near the beginning or end of the context and substantially lower when the same information appeared in the middle. The location of evidence can therefore influence whether the model appears to have “understood” a document.",
+        ],
+      },
+      {
+        heading: "Why do some languages outperform English?",
+        paragraphs: [
+          "Language introduces another layer of complexity. OneRuler evaluated long-context performance across 26 languages. Surprisingly, English was not the best-performing language in its long-context retrieval tasks. At context lengths of 64,000 and 128,000 tokens, Polish achieved the highest average performance across the evaluated models, while English ranked sixth (Kim et al., 2025).",
+          "This result should not be interpreted as evidence that LLMs generally understand Polish better than English. It describes performance on a particular collection of synthetic retrieval and aggregation tasks, under specific experimental conditions.",
+          "One possible factor is tokenization.",
+          "LLMs do not process texts directly as words but as tokens. A word may correspond to one token in one language but be divided into several tokens in another. Languages such as Polish, which have a rich morphological structure, can express grammatical information through inflection and thus produce many forms of the same lexical item. Depending on the tokenizer, these forms may be divided into multiple subword units.",
+          "Consequently, expressing the same information in English and Polish may require different numbers of tokens. Research has demonstrated considerable variation in the number of tokens needed to convey equivalent information across languages (Ahia et al., 2023).",
+          "OneRuler addressed this problem by using the same number of tokens in its main experimental setting, even when this meant that models received different amounts of text. For example, one Tamil document contained 42,124 tokens when processed with Gemini’s tokenizer but 103,990 tokens when processed with Qwen’s tokenizer (Kim et al., 2025).",
+          "If a tokenizer encodes English more efficiently than Polish, a fixed token budget may contain fewer Polish words and therefore less textual material around the information to be retrieved. In a Needle-in-a-Haystack task, this could potentially mean fewer distractors surrounding the Polish “needle,” which might help explain why the models performed better in Polish than in English.",
+          "This is, of course, my hypothesis rather than a conclusion established by the experiment. Token counts do not translate directly into an exact number of words, facts, or distractors. Moreover, OneRuler’s supplementary comparison using the same underlying text produced broadly similar rankings. Tokenization may therefore form part of the explanation, but the available evidence does not establish it as the reason for the Polish result.",
+        ],
+      },
+      {
+        heading: "Conclusion: Almost like a human?",
+        paragraphs: [
+          "To sum up, an LLM can perform several operations that we usually associate with reading, but its performance is shaped differently from human reading. Almost like a human reader, it can appear to lose concentration in the middle of a longer text. Sometimes, when it cannot find a piece of information, it may even deny that the information exists at all.",
+          "Almost like a human? Almost. :)",
+          "Subscribe to my newsletter if you would like to read my next article about how LLMs retrieve information about users’ locations from GPS data.",
+        ],
+      },
+      {
+        heading: "References",
+        paragraphs: [
+          "Ahia, O., Kumar, S., Gonen, H., Kasai, J., Mortensen, D., Smith, N. A., & Tsvetkov, Y. (2023). Do all languages cost the same? Tokenization in the era of commercial language models. Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, 9904–9923. Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.emnlp-main.614",
+          "Bai, Y., Lv, X., Zhang, J., Lyu, H., Tang, J., Huang, Z., Du, Z., Liu, X., Zeng, A., Hou, L., Dong, Y., Tang, J., & Li, J. (2024). LongBench: A bilingual, multitask benchmark for long context understanding. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 3119–3137. Association for Computational Linguistics. https://doi.org/10.18653/v1/2024.acl-long.172",
+          "Hsieh, C.-P., Sun, S., Kriman, S., Acharya, S., Rekesh, D., Jia, F., Zhang, Y., & Ginsburg, B. (2024). RULER: What’s the real context size of your long-context language models? Proceedings of the First Conference on Language Modeling. https://openreview.net/forum?id=kIoBbc76Sy",
+          "Kim, Y., Russell, J., Karpinska, M., & Iyyer, M. (2025). One ruler to measure them all: Benchmarking multilingual long-context language models. Proceedings of the Second Conference on Language Modeling. https://openreview.net/forum?id=92e3dc9717e16c3eef5a257286d5143e9b5083dc",
+          "Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., & Liang, P. (2024). Lost in the middle: How language models use long contexts. Transactions of the Association for Computational Linguistics, 12, 157–173. https://doi.org/10.1162/tacl_a_00638",
+          "Zhang, X., Chen, Y., Hu, S., Xu, Z., Chen, J., Hao, M., Han, X., Thai, Z., Wang, S., Liu, Z., & Sun, M. (2024). ∞Bench: Extending long context evaluation beyond 100K tokens. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 15262–15277. Association for Computational Linguistics. https://doi.org/10.18653/v1/2024.acl-long.814",
+        ],
+      },
+    ],
   },
 ];
