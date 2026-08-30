@@ -176,7 +176,7 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
         heading: "Reading comprehension in humans and machines",
         paragraphs: [
           "Before asking whether a large language model can read a book in Polish, French, or English, we first need to define what reading means.",
-          "One way of defining what it means for an LLM to “read” is to compare it with how reading comprehension is tested throughout a person't education. While school examinations in a student’s mother tongue assume linguistic competence and test what the student can do with a text, foreign-language examinations test also both understanding of the language and understanding of what the text communicates.",
+          "One way of defining what it means for an LLM to “read” is to compare it with how reading comprehension is tested throughout a person's education. While school examinations in a student’s mother tongue assume linguistic competence and test what the student can do with a text, foreign-language examinations test also both understanding of the language and understanding of what the text communicates.",
           "Evaluating LLMs is, to some extent, similar, although their capabilities are divided more systematically into different levels: retrieving information, retrieving information and making inferences from it, and synthesizing information across a text.",
         ],
       },
