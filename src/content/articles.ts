@@ -243,7 +243,7 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
       },
     ],
   },
-];
+
   {
     number: "05",
     slug: "inside-an-ai-model",
