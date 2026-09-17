@@ -252,15 +252,14 @@ The Swedish Pompeii Project. V 1,26 Casa di Caecilius Iucundus - South House. ht
     category: "AI & Research",
     readTime: "8 min",
     published: "October 2026",
-    intro:
-      "Self-Organizing Maps, fine-tuning and other topics..",
+    intro: "Self-Organizing Maps, fine-tuning and other topics.",
     sections: [
       {
         heading: "Looking inside the model",
         paragraphs: [
           "We often describe an AI model by looking at what enters and what comes out. We give it text, an image, or a collection of numbers, and observe its prediction. But what happens between the input and the answer?",
-          ],
+        ],
       },
     ],
   },
-
+];
